@@ -8,19 +8,65 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+### Persona 1: Ana - Profissional Atarefada
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
+#### História:
+Ana é uma executiva de 35 anos, mãe de duas crianças pequenas e responsável por um cargo de gestão em uma empresa de tecnologia. Sua rotina é agitada e demanda grande parte do seu tempo, deixando pouco espaço para cuidar de sua saúde. Ela muitas vezes adia a marcação de exames e consultas por falta de tempo e flexibilidade. Ana vê o uso da tecnologia como uma solução para agilizar seu agendamento médico.
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
+#### Necessidades:
+- Agendar consultas e exames de forma rápida e flexível.
+- Receber notificações e lembretes para não esquecer as marcações.
+- Acesso fácil aos resultados dos exames, mesmo com sua agenda cheia.
+- Garantia de segurança e privacidade de suas informações.
+
+### Persona 2: Carlos - Aposentado Conectado
+
+#### História:
+Carlos tem 65 anos e é aposentado. Ele adora tecnologia e está sempre conectado, seja para ler notícias, se comunicar com a família ou aprender coisas novas. Mesmo após a aposentadoria, ele valoriza sua saúde e faz exames regularmente. Ele acredita que uma plataforma online que facilite a marcação de consultas e exames seria uma maneira conveniente de cuidar de sua saúde.
+
+#### Necessidades:
+
+- Agendar consultas e exames sem sair de casa.
+- Interface simples e fácil de usar, pois ele não é um especialista em tecnologia.
+- Acesso rápido a informações sobre clínicas e médicos disponíveis.
+- Receber orientações claras sobre como proceder com os exames.
+
+### Persona 3: Gabriela - Estudante Multitarefa
+
+#### História:
+Gabriela, 22 anos, é estudante universitária em período integral, além de trabalhar meio período como freelancer. Ela está sempre ocupada e enfrenta desafios para equilibrar seus estudos, trabalho e vida social. Ela valoriza muito sua saúde mental e física, mas muitas vezes deixa de marcar consultas médicas devido à falta de tempo. Gabriela vê uma plataforma online como uma maneira de gerenciar seu autocuidado de forma eficiente.
+
+#### Necessidades:
+- Agendar consultas e exames em horários flexíveis, adequados à sua agenda.
+- Acesso à plataforma via smartphone para agendar durante pausas entre aulas.
+- Opções de teleconsulta para economizar tempo em deslocamentos.
+- Recomendações de especialistas que compreendam sua rotina agitada.
+
+### Persona 4: Rodrigo - Pai de Família Preocupado
+
+#### História:
+ Rodrigo, 40 anos, é casado e pai de três filhos. Ele trabalha em período integral e faz de tudo para dar suporte à família. A saúde de sua esposa e filhos é uma prioridade para ele, mas as marcações de consultas e exames costumam ser um desafio logístico. Rodrigo busca uma maneira eficiente de agendar e gerenciar os cuidados de saúde de toda a família.
+
+#### Necessidades:
+- Agendar consultas e exames para múltiplos membros da família.
+- Receber notificações e lembretes para garantir que ninguém perca uma marcação importante.
+- Acesso a históricos de saúde e resultados anteriores de exames.
+- Opções de agendamento em clínicas próximas de casa e escola.
+
+### Persona 5: Sofia - Médica Autônoma
+
+#### História:
+Sofia é uma médica autônoma de 30 anos que trabalha em diferentes clínicas e hospitais. Sua rotina é flexível, mas demanda organização para garantir que ela esteja disponível para seus pacientes. Ela reconhece a importância da tecnologia para otimizar processos em sua prática médica e vê valor em uma plataforma que simplifique a marcação de consultas e exames.
+
+#### Necessidades:
+- Acesso a uma plataforma que permita sincronizar sua agenda de disponibilidade.
+- Facilidade em visualizar os horários disponíveis para novas consultas.
+- Receber informações detalhadas sobre os pacientes e suas necessidades.
+- Compartilhamento seguro de resultados de exames e históricos médicos com seus pacientes.
+
+### Observação: 
+Essas personas são fictícias e foram criadas com base nas informações fornecidas. Elas têm o propósito de ilustrar diferentes perfis de usuários que poderiam se beneficiar da plataforma Marcação Fácil Saúde, considerando suas necessidades, preferências e contextos de vida.
+
 
 ## Histórias de Usuários
 
@@ -46,32 +92,37 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|ID     | Descrição do Requisito  | Prioridade |
+|-------|-----------------------------------------|----|
+| RF-001 | Agendamento Flexível | ALTA | 
+| RF-002 | Notificar Consultas Agendadas | MÉDIA |
+| RF-003 | Listar Resultados de Exames | MÉDIA |
+| RF-004 | Cadastrar Usuários | MÉDIA |
+| RF-005 | Agendar Teleconsultas | MÉDIA |
+| RF-006 | Feedback e Avaliações | MÉDIA |
+
+- **Agendamento Flexível:** Os usuários devem poder agendar consultas e exames de acordo com sua disponibilidade. A plataforma deve oferecer opções de datas, horários e locais de atendimento.
+
+- **Notificar consultas agendadas:** A plataforma deve enviar notificações e lembretes aos usuários sobre as consultas e exames agendados. As notificações podem ser via e-mail ou notificações push.
+
+- **Listar resultados de exames:** Os usuários devem ter acesso aos resultados de exames anteriores, histórico médico e recomendações de profissionais de saúde. As informações devem ser apresentadas de maneira clara e compreensível.
+
+- **Cadastrar Usuários:** A plataforma deve permitir a criação de perfis de usuário personalizados, como pacientes, médicos, clínicas e laboratórios. Cada perfil deve ter acesso a funcionalidades específicas.
+
+- **Agendar teleconsultas**: A plataforma deve oferecer a opção de teleconsulta, permitindo aos usuários consultar remotamente com profissionais de saúde. Deve haver suporte técnico para garantir a qualidade das videochamadas.
+
+- **Feedback e Avaliações:** Os usuários devem poder avaliar a qualidade dos serviços prestados por clínicas e profissionais de saúde. As avaliações podem ajudar outros usuários na escolha de prestadores de serviços.
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+|RNF-001| Interface Intuitiva | MÉDIA | 
+|RNF-002| Segurança de Dados | BAIXA | 
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
+- **Interface Intuitiva:** A interface deve ser fácil de usar, mesmo para pessoas com pouca experiência em tecnologia. O processo de agendamento deve ser simplificado, com instruções claras.
 
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+- **Segurança de Dados:** A segurança dos dados do usuário é fundamental, incluindo informações médicas e pessoais. Deve haver criptografia e medidas de proteção para evitar vazamentos de informações.
 
 ## Restrições
 
@@ -79,25 +130,36 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|01| Regulamentações de Saúde                              |
+|02| Dados Sensíveis                                       |
+|03| Acesso à Internet                                     |
+|04| Acesso a Dispositivos                                 |
+|05| Variedade de Plataformas                              |
+|06| Requisitos Mínimos de Hardware                        |
+|07| Proteção contra Ciberataques                          |
+|08| Conformidade com Padrões Web                          |
+|09| Manutenção e Atualizações                             |
 
-
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+- **1. Regulamentações de Saúde:**
+A plataforma deve cumprir todas as regulamentações e leis relacionadas à privacidade e segurança de informações médicas.
+- **2. Dados Sensíveis:**
+A plataforma não deve compartilhar, vender ou usar de forma inadequada os dados de saúde dos usuários.
+- **3. Acesso à Internet:**
+A plataforma requer acesso à internet, o que pode ser uma limitação para usuários em áreas com conectividade precária.
+- **4. Acesso a Dispositivos:**
+Os usuários devem ter acesso a um dispositivo compatível (computador, smartphone, tablet) para usar a plataforma.
+- **5. Variedade de Plataformas:**
+A plataforma deve ser compatível com diferentes sistemas operacionais e navegadores para atender a uma variedade de dispositivos.
+- **6. Requisitos Mínimos de Hardware:**
+A plataforma pode ter requisitos mínimos de hardware e conexão para garantir uma experiência satisfatória.
+- **7. Proteção contra Ciberataques:**
+A plataforma deve implementar medidas robustas de segurança para evitar ataques cibernéticos e proteger os dados dos usuários.
+- **8. Conformidade com Padrões Web:**
+A plataforma deve seguir os padrões e práticas recomendadas de desenvolvimento web para garantir a acessibilidade e usabilidade.
+- **9. Manutenção e Atualizações:**
+A plataforma requer manutenção constante para correções de bugs, atualizações de segurança e melhorias de recursos
 
 ## Diagrama de Casos de Uso
 
 O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
-
-> **Links Úteis**:
-> - [Criando Casos de Uso](https://www.ibm.com/docs/pt-br/elm/6.0?topic=requirements-creating-use-cases)
-> - [Como Criar Diagrama de Caso de Uso: Tutorial Passo a Passo](https://gitmind.com/pt/fazer-diagrama-de-caso-uso.html/)
-> - [Lucidchart](https://www.lucidchart.com/)
-> - [Astah](https://astah.net/)
-> - [Diagrams](https://app.diagrams.net/)
