@@ -94,56 +94,53 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID     | Descrição do Requisito  | Prioridade |
 |-------|-----------------------------------------|----|
-| RF-001 | Agendamento Flexível | ALTA | 
+| RF-001 | Gerenciar Agendamentos | ALTA | 
 | RF-002 | Notificar Consultas Agendadas | MÉDIA |
 | RF-003 | Listar Resultados de Exames | MÉDIA |
-| RF-004 | Cadastrar Usuários | MÉDIA |
+| RF-004 | Gerenciar Usuários | MÉDIA |
 | RF-005 | Agendar Teleconsultas | MÉDIA |
-| RF-006 | Feedback e Avaliações | MÉDIA |
+| RF-006 | Permitir Feedback e Avaliações | MÉDIA |
 | RF-007 | Atualização de Laudos | ALTA |
 | RF-008 | Realizar Pedidos | MÉDIA |
-| RF-009 | Emissão de Receituário | MÉDIA |
-| RF-010 | Lista de Agendamento | MÉDIA |
-| RF-011 | Orientação para Realização de Exames | MÉDIA |
-| RF-012 | Paciente que Realizará o Procedimento | ALTA |
+| RF-009 | Emitir Receituário | MÉDIA |
+| RF-010 | Consultar Orientações para Realização de Exames | MÉDIA |
 
-- **RF-001 - Agendamento Flexível:** Os usuários devem poder agendar consultas e exames de acordo com sua disponibilidade. A plataforma deve oferecer opções de datas, horários e locais de atendimento.
+- **RF-001 -Gerenciar Agendamentos:** Os usuários devem poder agendar consultas e exames de acordo com sua disponibilidade. A plataforma deve oferecer opções de datas, horários e locais de atendimento. O sistema deve informar ao usuário as orientações para a realização do exames, comunicando os documentos necessários, preparo para realizar procedimento e etc.
 
 - **RF-002 - Notificar consultas agendadas:** A plataforma deve enviar notificações e lembretes aos usuários sobre as consultas e exames agendados. As notificações podem ser via e-mail ou notificações push.
 
 - **RF-003 - Listar resultados de exames:** Os usuários devem ter acesso aos resultados de exames anteriores, histórico médico e recomendações de profissionais de saúde. As informações devem ser apresentadas de maneira clara e compreensível.
 
-- **RF-004 - Cadastrar Usuários:** A plataforma deve permitir a criação de perfis de usuário personalizados, como pacientes, médicos, clínicas e laboratórios. Cada perfil deve ter acesso a funcionalidades específicas.
+- **RF-004 - Gerenciar Usuários:** A plataforma deve permitir a criação de perfis de usuário personalizados, como pacientes, médicos, clínicas e laboratórios. Cada perfil deve ter acesso a funcionalidades específicas.
 
 - **RF-005 - Agendar teleconsultas**: A plataforma deve oferecer a opção de teleconsulta, permitindo aos usuários consultar remotamente com profissionais de saúde. Deve haver suporte técnico para garantir a qualidade das videochamadas.
 
-- **RF-006 - Feedback e Avaliações:** Os usuários devem poder avaliar a qualidade dos serviços prestados por clínicas e profissionais de saúde. As avaliações podem ajudar outros usuários na escolha de prestadores de serviços.
+- **RF-006 - Permitir Feedback e Avaliações:** Os usuários devem poder avaliar a qualidade dos serviços prestados por clínicas e profissionais de saúde. As avaliações podem ajudar outros usuários na escolha de prestadores de serviços.
 
-- **RF-007 - Atualização de Laudos:** Os médicos devem ser capazes de inserir, editar e excluir laudos relacionados aos exames do paciente.
+- **RF-007 - Atualizar Laudos:** Os médicos devem ser capazes de inserir, editar e excluir laudos relacionados aos exames do paciente.
 
 - **RF-008 - Realizar Pedidos:** Os médicos devem ser capazes de emitir ou excluir atestado de licença médica, atestado de comparecimento e pedidos médicos.
 
-- **RF-009 - Emissão de Receituário:** O sistema deve permitir que os médicos sejam capazes de emitir receituário para os pacientes.
+- **RF-009 - Emitir Receituário:** O sistema deve permitir que os médicos sejam capazes de emitir receituário para os pacientes.
 
 - **RF-010 - Lista de Agendamento:** O sistema deve permitir que o médico tenha acesso a lista de pacientes agendados com o nome do paciente, data de nascimento, data da consulta e horário.
 
-- **RF-011 - Orientação para Realização de Exames:** O sistema deve informar ao usuário as orientações para a realização do exames, comunicando os documentos necessários, preparo para realizar procedimento e etc.
+- **RF-011 - Consultar Orientações para Realização de Exames:** O sistema deve informar ao usuário as orientações para a realização do exames, comunicando os documentos necessários, preparo para realizar procedimento e etc.
 
-- **RF-012 - Paciente que Realizará o Procedimento:** O sistema deve permitir que o usuário selecione se o atendimento/exame será para o próprio, ou para um de seus dependentes. 
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| Interface Intuitiva | MÉDIA | 
-|RNF-002| Segurança de Dados | ALTA | 
-|RNF-003| Sistema Responsivo | MÉDIA | 
+|RNF-001| Simplificar a Interface | MÉDIA | 
+|RNF-002| Proteger Dados | ALTA | 
+|RNF-003| Adaptar Sistema | MÉDIA | 
 
-- **RNF-001 - Interface Intuitiva:** A interface deve ser fácil de usar, mesmo para pessoas com pouca experiência em tecnologia. O processo de agendamento deve ser simplificado, com instruções claras.
+- **RNF-001 - Simplificar a Interface:** A interface deve ser fácil de usar, mesmo para pessoas com pouca experiência em tecnologia. O processo de agendamento deve ser simplificado, com instruções claras.
 
-- **RNF-002 - Segurança de Dados:** A segurança dos dados do usuário é fundamental, incluindo informações médicas e pessoais. Deve haver criptografia e medidas de proteção para evitar vazamentos de informações.
+- **RNF-002 - Proteger Dados:** A segurança dos dados do usuário é fundamental, incluindo informações médicas e pessoais. Deve haver criptografia e medidas de proteção para evitar vazamentos de informações.
 
-- **RNF-003 - Sistema Responsivo:** O sistema deve ser responsivo e permitir o acesso da aplicação por diferentes tipos de telas. 
+- **RNF-003 - Adaptar Sitema:** O sistema deve ser responsivo e permitir o acesso da aplicação por diferentes tipos de telas. 
 
 ## Restrições
 
