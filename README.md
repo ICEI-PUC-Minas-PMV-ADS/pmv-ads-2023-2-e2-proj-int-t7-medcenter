@@ -1,10 +1,10 @@
 # MEDCENTER
 
-Análise e Desenvolvimento de Sistemas
+## Análise e Desenvolvimento de Sistemas
 
-Projeto: Desenvolvimento de uma Aplicação Interativa
+## Projeto: Desenvolvimento de uma Aplicação Interativa
 
-Eixo 2
+## Eixo 2
 
 O objetivo geral deste projeto é criar um website que contribua de forma prática, inteligente e confiável o processo de marcação de consultas, exames e a obtenção de resultados.
 
