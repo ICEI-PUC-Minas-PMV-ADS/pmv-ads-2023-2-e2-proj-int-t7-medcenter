@@ -1,23 +1,25 @@
-# TÍTULO DO PROJETO
+# MEDCENTER
 
-`CURSO`
+Análise e Desenvolvimento de Sistemas
 
-`DISCIPLINA`
+Projeto: Desenvolvimento de uma Aplicação Interativa
 
-`SEMESTRE`
+Eixo 2
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O objetivo geral deste projeto é criar um website que contribua de forma prática, inteligente e confiável o processo de marcação de consultas, exames e a obtenção de resultados.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Emile Muniz Ramos
+* Matheus Henrique Oliveira Silva
+* Bruno Nery da Silva
+* Guilherme Batista Brito
+* Marcos Vinicius Braga de Souza Santos
+* Giovani de Queiroz Cheloni
 
 ## Orientador
 
-* Nome completo do professor 1
+* Bernardo Jeunon de Alencar
 
 ## Instruções de utilização
 
