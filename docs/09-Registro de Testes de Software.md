@@ -33,9 +33,9 @@ Os testes serão realizados nas aplicações interativas da plataforma.
 
 ### 2. Teste de Comunicação de Datas e Informações:
 
-- 'Cenário 1' O usuário agenda uma consulta e verifica se a data e hora escolhidas correspondem às informações exibidas.
-- 'Cenário 2' O usuário solicita um exame e verifica se as informações sobre as orientações estão claras e corretas.
-- 'Cenário 3' O usuário verifica se as notificações e lembretes de consultas e exames são enviados corretamente.
+- `Cenário 1` O usuário agenda uma consulta e verifica se a data e hora escolhidas correspondem às informações exibidas.
+- `Cenário 2` O usuário solicita um exame e verifica se as informações sobre as orientações estão claras e corretas.
+- `Cenário 3` O usuário verifica se as notificações e lembretes de consultas e exames são enviados corretamente.
 
 
 
