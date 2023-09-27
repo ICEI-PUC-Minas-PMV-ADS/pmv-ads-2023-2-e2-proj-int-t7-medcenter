@@ -32,7 +32,8 @@ etiquetas:
 A alocação das tarefas semanais ocorre por meio de uma chamada de voz, na qual todos os participantes discutem os objetivos da semana e estratégias para abordá-los. De forma voluntária e com ênfase na eficiência, os membros se organizam, reconhecendo e valorizando suas habilidades individuais.
 
 ### Processo
-   
+
+   ![trello-projeto](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e2-proj-int-t7-medcenter/assets/128256600/e0e6a81f-9e21-4b93-aee8-9b8d67e27359)
 
 ### Ferramentas
 
