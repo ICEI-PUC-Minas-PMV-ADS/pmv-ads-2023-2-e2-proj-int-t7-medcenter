@@ -12,7 +12,7 @@
     <!-- Alerta pagina administrador -->
     <div class="admin-message">
         <p>Se você é administrador e deseja acessar os resultados dos pacientes e conferir outras soluções, acesse o <a
-                href="#">Portal Administrador</a>.</p>
+                href="portalAdm.html">Portal Administrador</a>.</p>
     </div>
 
     <!-- Menu Principal -->
@@ -33,9 +33,13 @@
             <img class="search-icon" src="https://cdn-icons-png.flaticon.com/512/1159/1159934.png"
                 alt="Ícone de Pesquisa">
         </div>
-        <button class="login">Login</button>
+        <div onclick="abrirModal()" class="btn">
+            <button class="login">Login</button>
+        </div>
+           
+        
     </header>
-
+       
     <body>
         <!-- Carrossel de Imagens -->
         <div class="carousel">
@@ -59,6 +63,9 @@
             <div class="carousel-dot" data-slide="1"></div>
             <div class="carousel-dot" data-slide="2"></div>
         </div>
+       
+        <!-- <div id="fade" class="hide"></div> -->   
+
 
         <script src="/src/Assets/Scripts/home.js"></script>
         <!-- Seção 1 -->
@@ -194,5 +201,31 @@
                 <li>Plataforma desenvolvida pelos alunos de Análise e desenvolvimento de Sistema da PUC Minas - 2023</li>
                 <li>Medcenter - 2023</li>
             </ul>
+            <div class="janela-modal" id="janela-modal">     
+                <div class="modal-dialog">
+                    <button class="fechar" id="fechar">X</button>
+                    <div class="modal-bg"></div>
+                    <div class="modal-content">       
+                        <div id="modal-header">
+                            <h1>Faça seu login</h1>
+                            <h4>Ainda não tem conta?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="destino.html">Realizar Cadastro</a></h5>
+                        
+                        </div>
+                        <div class="modal-body">
+                            <form action="destino.html" method="post">                   
+                                <input type="text" class="CPF" placeholder="Digite seu CPF" name="cpf" id="cpf" size="35" required> <br>           
+                                <input type="password" placeholder="Senha" name="senha" id="senha" size="35" required>           
+                                <h5><a href="destino.html">Esqueci minha senha</a></h5>      
+                                <button class="submit">Entrar</button>         
+                            </form>
+                        </div>
+                        <div class="modal-footer">   
+                            <h6><a href="portalAdm.html">Alterar para o portal de administrador</a></h6>            
+                       </div>
+                    </div>
+                </div>          
+            
+        </div>
+        <script src="/src/Assets/Scripts/home.js"></script>
     </body>
 </html>

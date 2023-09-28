@@ -484,110 +484,44 @@ h1 {
     font-size: smaller;
     list-style: none;
 }
-.janela-modal.abrirModal {
-    display: flex;
-}
-
 .janela-modal {
     width: 99vw;
-    height: 100vh;
+    /* height: 190%; */ 
+    height: 100vh; 
     position: fixed;
-    top: 0px;
-    left: 0px;
+    /* top: -405px; */ 
+    top: 0; 
+    left: 0;
+    right: 5;
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 999;
-    background-color: rgba(130, 125, 125, 0.89);
-}
-
-.janela-modal.abrirModal {
-    display: flex;
-}
-@keyframes abrirmodal {
-    from {
-        opacity: 0;
-        transform: translate3d(0, -20px -5px);
-
-    }
-    to{
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-}
-.abrirModal .modal-dialog{
-    animation: abrirModal 0.20s;
-}
-
-.janela-modal {
-    width: 99vw;
-    height: 100vh;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    background-color: rgba(130, 125, 125, 0.89);
-}
-.janela-modal.abrirModal {
-    display: flex;
-}
-m.janela-modal {
-    width: 99vw;
-    height: 100vh;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    background-color: rgba(130, 125, 125, 0.89);
-}
-div {
-    display: block;
-}
-body {
-    font-family: Arial, sans-serif;
-    margin: 0px;
-    padding: 0px;
-}
-.abrirModal .modal-dialog {
-    animation-timeline: auto;
-    animation-range-start: normal;
-    animation-range-end: normal;
-    animation: 0.7s ease 0s 1 normal none running abrirmodal;
-}
-.janela-modal {
-    width: 99vw;
-    height: 100vh;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    background-color: rgba(130, 125, 125, 0.89);
-}
-body {
-    font-family: Arial, sans-serif;
-    margin: 0px;
-    padding: 0px;
-}
+    z-index:999;
+    background-color: #827d7de3;
+} 
 .modal-dialog {
-    height: 35%;
-    width: 75%;
-    background-color: white;
-    min-height: 70vh;
+    height: 35%; 
+    width: 95%; 
+    background-color: white; 
+    min-height: 60vh;
     backdrop-filter: blur(10px);
-    margin-top: 40px;
-    align-items: center;
-    display: flex;
     padding: 10px;
     border-radius: 25px;
+    margin-top: 40px;
+    align-items: center;
+    display: flex; 
+    
+}
+.modal-bg { 
+    width: 100%; 
+    height: 90vh; 
+    background-image:  url(/docs/img/WhatsApp\ Image\ 2023-09-26\ at\ 18.15.03.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: white; 
+    border-radius: 20px;
+
 }
 .fechar {
     position: absolute;
@@ -595,103 +529,88 @@ body {
     right: -10px;
     width: 35px;
     height: 35px;
+    border-radius: 50%;
+    border: 0;
     background-color: red;
     color: white;
     font-size: 20px;
     cursor: pointer;
-    border-radius: 50%;
-    border-width: 0px;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
 }
-button {
-    width: 284px;
-    height: 50px;
-    color: black;
-    background-color: rgb(111, 192, 111);
-    font-size: 20px;
-    max-width: 500px;
+.login {
     cursor: pointer;
-    border-radius: 10px;
 }
-
-
-.modal-bg {
-    width: 65%;
-    height: 100%;
-    background-image: url(/docs/img/usuario.png);
-    background-size: contain;
-    background-color: white;
-    background-position: center center;
-    background-repeat: no-repeat;
-    border-radius: 25px;
-}
-.modal-content {
+.janela-modal.abrirModal {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 40%;
 }
+@keyframes abrirmodal{
+    from{
+        opacity: 0;
+        transform: translate3d(0, -20px, -5px);
+    }
+   to{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+   } 
+}
+.abrirModal .modal-dialog{
+    animation: abrirmodal 0.7s;
+
+}
+
 h1 {
     font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 35px;
+    font-size: 50px;
     font-style: italic;
     color: green;
     text-shadow: black 1px 1px 2px;
     letter-spacing: -0.05em;
-    margin: 2px 0px 50px;
+    margin: 2px 0px 45px;
 }
 
 
-h4 {
+
+
+h4 {   
     font-style: normal;
     font-size: 11px;
+
+}
+h5 {
+    font-size: 12px;
 }
 
 input {
-    height: 30px;
-    margin-bottom: 15px;
+    height: 45px;
+    width: 480px;
+    font-size: 15px;
+    border: 1px;
     padding: 8px;
-    border-width: 1.5px;
-    border-style: solid;
-    border-color: rgb(22, 21, 21);
-    border-image: initial;
+    border-radius: 3px;
+    border: 1.5px solid #161515;
     border-radius: 10px;
-}
-    a:-webkit-any-link {
-        color: -webkit-link;
-        cursor: pointer;
-        text-decoration: underline;
+    margin-bottom: 15px;
+   }
+    h6 {
+        margin-right: 60px;
     }
-    h5 {
-        font-size: 12px;
+    .modal-content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 40%; 
+
     }
-    button {
-        width: 284px;
-        height: 50px;
-        color: black;
-        background-color: rgb(111, 192, 111);
-        font-size: 20px;
-        max-width: 500px;
-        cursor: pointer;
-        border-radius: 10px;
+    button{
+    width: 500px;
+    height: 63px;
+    color: black;
+    background-color: rgb(111, 192, 111);
+    border-radius: 10px;
+    font-size: 20px;
+    max-width: 500px;
+    cursor: pointer;
+    
     }
-    a:-webkit-any-link {
-        color: -webkit-link;
-        cursor: pointer;
-        text-decoration: underline;}
-        h6 {
-            font-size: 0.67em;
-            font-weight: bold;
-        }
-        h1 {
-            font-family: Georgia, "Times New Roman", Times, serif;
-            font-size: 35px;
-            font-style: italic;
-            color: green;
-            text-shadow: black 1px 1px 2px;
-            letter-spacing: -0.05em;
-            margin: 2px 0px 10px;
-        }
+   
+    
