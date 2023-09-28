@@ -661,9 +661,7 @@ input {
     border-radius: 10px;
 }
     a:-webkit-any-link {
-        color: -webkit-link;
         cursor: pointer;
-        text-decoration: underline;
     }
     h5 {
         font-size: 12px;
@@ -679,9 +677,7 @@ input {
         border-radius: 10px;
     }
     a:-webkit-any-link {
-        color: -webkit-link;
-        cursor: pointer;
-        text-decoration: underline;}
+        cursor: pointer;}
         h6 {
             font-size: 0.67em;
             font-weight: bold;
