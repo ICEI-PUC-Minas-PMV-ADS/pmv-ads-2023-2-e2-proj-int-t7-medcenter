@@ -11,6 +11,8 @@
         document.querySelector('#menu02').classList.add('hidden')
         document.querySelector('#menu03').classList.add('hidden')
 
+        document.querySelector('#resultados').classList.add('hidden')
+
         document.querySelector('#link01').classList.add('selected')
         document.querySelector('#link02').classList.remove('selected')
         document.querySelector('#link03').classList.remove('selected')
@@ -20,6 +22,8 @@
         document.querySelector('#menu01').classList.add('hidden')
         document.querySelector('#menu02').classList.remove('hidden')
         document.querySelector('#menu03').classList.add('hidden')
+        
+        document.querySelector('#resultados').classList.remove('hidden')
 
         document.querySelector('#link01').classList.remove('selected')
         document.querySelector('#link02').classList.add('selected')
@@ -31,6 +35,8 @@
         document.querySelector('#menu02').classList.add('hidden')
         document.querySelector('#menu03').classList.remove('hidden')
 
+        document.querySelector('#resultados').classList.add('hidden')
+        
         document.querySelector('#link01').classList.remove('selected')
         document.querySelector('#link02').classList.remove('selected')
         document.querySelector('#link03').classList.add('selected')
