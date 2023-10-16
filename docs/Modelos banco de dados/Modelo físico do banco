@@ -1,0 +1,101 @@
+CREATE DATABASE MEDCENTER;
+
+CREATE TABLE Usuario (
+    ID_Usuario INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Telefone VARCHAR(20) NOT NULL,
+    Data_de_nascimento DATE NOT NULL,
+    CPF VARCHAR(14) NOT NULL
+);
+
+CREATE TABLE Paciente (
+    ID_Paciente INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(255) NOT NULL,
+    Endereco VARCHAR(255) NOT NULL,
+    Data_de_nascimento DATE NOT NULL,
+    Telefone VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Medico (
+    ID_Medico INT PRIMARY KEY AUTO_INCREMENT,
+    Especialidade VARCHAR(255) NOT NULL,
+    Telefone VARCHAR(20) NOT NULL,
+    Endereco VARCHAR(255),
+    Data_de_nascimento DATE NOT NULL,
+    Nome VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Laudo (
+    ID_Laudo INT PRIMARY KEY AUTO_INCREMENT,
+    Data_Laudo DATE NOT NULL,
+    Descricao_Laudo VARCHAR(1000),
+    idPaciente INT NOT NULL,
+    idMedico INT NOT NULL,
+    FOREIGN KEY(idPaciente) REFERENCES Paciente (ID_Paciente),
+    FOREIGN KEY(idMedico) REFERENCES Medico (ID_Medico)
+);
+
+CREATE TABLE Atestado (
+    ID_Atestado INT PRIMARY KEY AUTO_INCREMENT,
+    Data_Atestado DATE NOT NULL,
+    Descricao_Atestado VARCHAR(1000),
+    idPaciente INT NOT NULL,
+    idMedico INT NOT NULL,
+    FOREIGN KEY(idPaciente) REFERENCES Paciente (ID_Paciente),
+    FOREIGN KEY(idMedico) REFERENCES Medico (ID_Medico)
+);
+
+CREATE TABLE Receita (
+    ID_Receita INT PRIMARY KEY AUTO_INCREMENT,
+    Data_Receita DATE NOT NULL,
+    Descricao_Receita VARCHAR(1000),
+    idPaciente INT NOT NULL,
+    idMedico INT NOT NULL,
+    FOREIGN KEY(idPaciente) REFERENCES Paciente (ID_Paciente),
+    FOREIGN KEY(idMedico) REFERENCES Medico (ID_Medico)
+);
+
+CREATE TABLE Dependente (
+    ID_Dependente INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(255) NOT NULL,
+    Data_Nascimento DATE NOT NULL,
+    idPaciente INT NOT NULL,
+    FOREIGN KEY(idPaciente) REFERENCES Paciente (ID_Paciente)
+);
+
+CREATE TABLE Consulta (
+    ID_Consulta INT PRIMARY KEY AUTO_INCREMENT,
+    Endereco_Clinica VARCHAR(255) NOT NULL,
+    Orientacoes_Consulta VARCHAR(1000),
+    Hora_Consulta TIME NOT NULL,
+    Data_Consulta DATE NOT NULL,
+    idPaciente INT NOT NULL,
+    idMedico INT NOT NULL,
+    FOREIGN KEY(idPaciente) REFERENCES Paciente (ID_Paciente),
+    FOREIGN KEY(idMedico) REFERENCES Medico (ID_Medico)
+);
+
+CREATE TABLE Exame (
+    ID_Exame INT PRIMARY KEY AUTO_INCREMENT,
+    Endereco_Clinica VARCHAR(255) NOT NULL,
+    Tipo_Exame VARCHAR(255) NOT NULL,
+    Orientacoes_Exame VARCHAR(1000),
+    Telefone_Clinica VARCHAR(20) NOT NULL,
+    Hora_Exame TIME NOT NULL,
+    Data_Exame DATE NOT NULL,
+    idPaciente INT NOT NULL,
+    idMedico INT NOT NULL,
+    FOREIGN KEY(idPaciente) REFERENCES Paciente (ID_Paciente),
+    FOREIGN KEY(idMedico) REFERENCES Medico (ID_Medico)
+);
+
+CREATE TABLE Pedido (
+    ID_Pedido INT PRIMARY KEY AUTO_INCREMENT,
+    Procedimento VARCHAR(255) NOT NULL,
+    Data_Pedido DATE NOT NULL,
+    idPaciente INT NOT NULL,
+    idMedico INT NOT NULL,
+    FOREIGN KEY(idPaciente) REFERENCES Paciente (ID_Paciente),
+    FOREIGN KEY(idMedico) REFERENCES Medico (ID_Medico)
+);
