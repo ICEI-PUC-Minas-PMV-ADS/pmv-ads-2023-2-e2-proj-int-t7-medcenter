@@ -20,5 +20,10 @@ namespace medcenter_backend.Models
 
         [Required(ErrorMessage = "Obrigatório informar o email!")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Obrigatório informar o senha!")]
+        public string Senha { get; set; }
+
+        public int TipoUsuario { get; set; }
     }
 }
