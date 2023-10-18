@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using medcenter_backend.Models;
 
@@ -11,9 +12,10 @@ using medcenter_backend.Models;
 namespace medcenter_backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231017231954_M94_Adicionando_Enum_Perfil")]
+    partial class M94_Adicionando_Enum_Perfil
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,9 +46,6 @@ namespace medcenter_backend.Migrations
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Perfil")
-                        .HasColumnType("int");
 
                     b.Property<string>("Senha")
                         .IsRequired()

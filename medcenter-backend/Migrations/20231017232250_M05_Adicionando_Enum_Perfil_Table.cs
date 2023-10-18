@@ -4,19 +4,12 @@
 
 namespace medcenter_backend.Migrations
 {
-    public partial class M03 : Migration
+    public partial class M05_Adicionando_Enum_Perfil_Table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Senha",
-                table: "Usuarios",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
             migrationBuilder.AddColumn<int>(
-                name: "TipoUsuario",
+                name: "Perfil",
                 table: "Usuarios",
                 type: "int",
                 nullable: false,
@@ -26,11 +19,7 @@ namespace medcenter_backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Senha",
-                table: "Usuarios");
-
-            migrationBuilder.DropColumn(
-                name: "TipoUsuario",
+                name: "Perfil",
                 table: "Usuarios");
         }
     }

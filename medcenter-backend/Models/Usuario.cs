@@ -16,14 +16,20 @@ namespace medcenter_backend.Models
         public string Cpf { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar a data de nascimento!")]
+        [Display(Name="Data de nascimento")]
         public DateTime DataNascimento { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar o email!")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Obrigatório informar o senha!")]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
-
-        public int TipoUsuario { get; set; }
+        public TipoPerfil Perfil { get; set; }
+    }
+    public enum TipoPerfil
+    {
+        Administrador,
+        Usuario
     }
 }
