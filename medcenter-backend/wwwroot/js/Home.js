@@ -46,15 +46,4 @@ document.addEventListener("DOMContentLoaded", function () {
     // Alterar automaticamente o slide a cada 7 segundos
     setInterval(nextSlide, 7000);
   });
-
-  function abrirModal() {
-    const modal = document.getElementById('janela-modal')
-    modal .classList.add('abrirModal')
-
-    modal.addEventListener('click', (e) => {
-      if(e.target.id == 'fechar' || e.target.id == 'janela-modal'){
-        modal.classList.remove('abrirModal')
-      }
-    })
-  }
   

@@ -29,7 +29,8 @@ namespace medcenter_backend.Models
     }
     public enum TipoPerfil
     {
-        Administrador,
-        Usuario
+        Usuario,
+        Administrador
+        
     }
 }
