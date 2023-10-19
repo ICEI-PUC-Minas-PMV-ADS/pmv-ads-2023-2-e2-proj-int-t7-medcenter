@@ -34,7 +34,8 @@ namespace medcenter_backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(Usuario usuario)
         {
-            var dados = await _context.Usuarios.FindAsync(usuario.Id);
+            var dados = await _context.Usuarios.FirstOrDefaultAsync(m => m.Email == usuario.Email);
+
             if (dados == null)
             {
                 ViewBag.Message = "Usuario e/ou senha inválidos!";
@@ -47,7 +48,7 @@ namespace medcenter_backend.Controllers
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, dados.Nome),
-                    new Claim(ClaimTypes.NameIdentifier, dados.Id.ToString()),
+                    new Claim(ClaimTypes.NameIdentifier, dados.Email.ToString()),
                     new Claim(ClaimTypes.Role, dados.Perfil.ToString())
                 };
 
