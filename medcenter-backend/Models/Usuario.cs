@@ -31,6 +31,5 @@ namespace medcenter_backend.Models
     {
         Usuario,
         Administrador
-        
     }
 }
