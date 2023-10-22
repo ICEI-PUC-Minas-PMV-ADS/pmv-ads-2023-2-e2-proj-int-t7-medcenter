@@ -39,6 +39,11 @@ namespace medcenter_backend.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public IActionResult LoginAdmin() {
+            return View();
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(Usuario usuario)
@@ -108,6 +113,7 @@ namespace medcenter_backend.Controllers
             return View(usuario);
         }
 
+        [AllowAnonymous]
         // GET: Usuarios/Create
         public IActionResult Create()
         {

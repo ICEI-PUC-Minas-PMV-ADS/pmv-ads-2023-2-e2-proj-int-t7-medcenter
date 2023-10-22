@@ -9,5 +9,7 @@ namespace medcenter_backend.Models
 
         public DbSet<Usuario> Usuarios { get; set; }
 
+        public DbSet<Exame> Exames { get; set; }
+
     }
 }
