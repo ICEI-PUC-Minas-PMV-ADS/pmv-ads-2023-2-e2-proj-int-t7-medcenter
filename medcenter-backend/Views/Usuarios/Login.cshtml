@@ -6,7 +6,6 @@
 
 <h1>Login</h1>
 
-<h4>Usuario</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,12 +24,10 @@
             <br>
             <div class="form-group">
                 <input type="submit" value="Acessar" class="btn btn-success" /> |
-                <a class="btn btn-info" asp-controller="Usuarios" asp-action="Create">Registrar-se</a>
+                <a class="btn btn-info" asp-controller="Usuarios" asp-action="Create">Registrar-se</a> |
+                <a class="btn btn-warning">Esqueci minha senha</a>
             </div>
             <br>
-            <div class="text-center justify-content-around">
-                <a class ="link-info">Esqueci minha senha.</a>
-            </div>
             
         </form>
         <h3>@ViewBag.Message</h3>

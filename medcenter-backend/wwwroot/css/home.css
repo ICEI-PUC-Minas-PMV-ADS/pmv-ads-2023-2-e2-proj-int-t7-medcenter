@@ -39,6 +39,375 @@
     cursor: pointer;
 }
 
-    .carousel-dot.active {
+.carousel-dot.active {
         background-color: #3CAEC7;
+ }
+
+
+section .flex-container {
+    display: flex;
+}
+
+.item1 {
+    width: 50%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+    .item1 h2 {
+        padding-bottom: 30px;
+        text-align: center;
+        color: #3CAEC7;
     }
+
+    .item1 p {
+        padding: 17px;
+    }
+
+    .item1 a {
+        display: block;
+        margin: 5px;
+        text-align: center;
+        font-size: small;
+        text-decoration: none;
+        color: white;
+        background-color: #3CAEC7;
+        border-radius: 3px;
+        padding: 10px 10px;
+        transition: color 1.0s;
+    }
+
+        .item1 a:hover {
+            text-decoration: underline;
+        }
+
+.item2 {
+    width: 50%;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+    .item2 h2 {
+        text-align: center;
+        color: #3CAEC7;
+    }
+
+    .item2 p {
+        font-size: medium;
+        padding: 16px;
+    }
+
+    .item2 a {
+        display: block;
+        margin: 5px;
+        text-align: center;
+        font-size: small;
+        text-decoration: none;
+        color: white;
+        background-color: #3CAEC7;
+        border-radius: 3px;
+        padding: 10px 10px;
+        transition: color 1.0s;
+    }
+
+        .item2 a:hover {
+            text-decoration: underline;
+        }
+
+    .item2 .button1 {
+        font-size: small;
+        padding-bottom: 10px;
+    }
+
+        .item2 .button1:hover {
+            text-decoration: underline;
+        }
+
+    .item2 .button2 {
+        font-size: small;
+    }
+
+.section .flex-container2 {
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.item3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    max-width: 640px;
+    height: 60%;
+    text-align: center;
+    background-color: #3CAEC7;
+    border-radius: 10px;
+}
+
+    .item3 h2 {
+        padding-bottom: 50px;
+        color: white;
+    }
+
+    .item3 a {
+        padding-bottom: 30px;
+        text-decoration: none;
+        color: white;
+    }
+
+        .item3 a:hover {
+            text-decoration: underline;
+        }
+
+    .item3 .button3 {
+        color: #3CAEC7;
+        margin: 0 auto;
+        font-size: small;
+        background-color: white;
+        padding: 15px 60px;
+        border-radius: 3px;
+    }
+
+.item4 {
+    max-width: 640px;
+    padding: 10px;
+}
+
+    .item4 h2 {
+        padding: 10px;
+        text-align: center;
+        color: #3CAEC7;
+    }
+
+    .item4 a {
+        display: flex;
+        justify-content: center;
+        font-size: small;
+        text-decoration: none;
+        color: white;
+        background-color: #3CAEC7;
+        padding: 10px;
+        border-radius: 3px;
+    }
+
+        .item4 a:hover {
+            text-decoration: underline;
+        }
+
+h1 {
+    margin-left: 50px;
+    margin-bottom: 5px;
+    font-size: xx-large;
+    color: #888;
+}
+
+.flex-container3 {
+    text-align: center;
+    display: flex;
+}
+
+.item5 {
+    padding: 0px 30px;
+    width: 40%;
+    display: block;
+}
+
+    .item5 h2 {
+        padding-top: 10px;
+        border-top: 5px solid #3EB4B2;
+    }
+
+    .item5 p {
+        padding-left: 100px;
+        text-align: left;
+        font-size: small;
+        color: #ccc;
+    }
+
+    .item5 li {
+        list-style: none;
+        text-decoration: none;
+    }
+
+.primary {
+    background-color: #D6F4F3;
+    color: #3EB4B2;
+    margin: 10px 10px 10px 50px;
+    padding: 25px;
+    border-radius: 50px;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+    .primary:hover {
+        border: 1px solid #3EB4B2;
+        background-color: #b6ebe9;
+    }
+
+.item5 a {
+    font-size: small;
+    text-decoration: none;
+    color: #3EB4B2;
+}
+
+.item6 {
+    padding: 0px 30px;
+    width: 40%;
+    display: block;
+}
+
+    .item6 h2 {
+        padding: 10px;
+        border-top: 5px solid #FF7D5F;
+    }
+
+    .item6 p {
+        padding-left: 100px;
+        text-align: left;
+        font-size: small;
+        color: #ccc;
+    }
+
+    .item6 li {
+        list-style: none;
+        text-decoration: none;
+    }
+
+.secondary {
+    background-color: #FEEAE5;
+    color: #FF7D5F;
+    margin: 10px 10px 10px 50px;
+    padding: 25px;
+    border-radius: 50px;
+    text-align: left;
+    transition: background-color 0.3s;
+}
+
+    .secondary:hover {
+        color: #000;
+        background-color: #f8c9bd;
+        border: 1px solid #FF7D5F;
+    }
+
+.item6 a {
+    font-size: small;
+    text-decoration: none;
+    color: #FF7D5F;
+}
+
+.item7 {
+    display: block;
+    width: 40%;
+    background-color: #D31245;
+}
+
+    .item7 h2 {
+        color: white;
+    }
+
+    .item7 p {
+        padding-left: 100px;
+        text-align: left;
+        font-size: small;
+        color: white;
+    }
+
+    .item7 li {
+        list-style: none;
+        text-decoration: none;
+    }
+
+.tertiary {
+    background-color: #E6829C;
+    color: white;
+    margin: 10px 50px 10px 50px;
+    padding: 25px;
+    border-radius: 50px;
+    text-align: left;
+    transition: color;
+}
+
+    .tertiary:hover {
+        border: 0.5px solid black;
+    }
+
+.item7 a {
+    font-size: small;
+    text-decoration: none;
+    color: white;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-decoration: none;
+    background-color: #656D75;
+}
+
+.footer-institutional {
+    list-style: none;
+    color: white;
+    font-size: small;
+}
+
+    .footer-institutional li {
+        text-align: left;
+        padding: 5px;
+    }
+
+.footer-exams {
+    list-style: none;
+    color: white;
+    font-size: small;
+}
+
+    .footer-exams li {
+        text-align: left;
+        padding: 5px;
+    }
+
+.footer-services {
+    list-style: none;
+    color: white;
+    font-size: small;
+}
+
+    .footer-services li {
+        text-align: left;
+        padding: 5px;
+    }
+
+.footer-financial {
+    list-style: none;
+    color: white;
+    font-size: small;
+}
+
+    .footer-financial li {
+        text-align: left;
+        padding: 5px;
+    }
+
+.footer-contact-us {
+    color: white;
+    font-size: small;
+}
+
+.footer-end {
+    margin: 0 auto;
+    border-top: 2px solid white;
+    color: white;
+    background-color: #656D75;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: smaller;
+    list-style: none;
+}
+
+.container {
+    min-width: 100%;
+}
