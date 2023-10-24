@@ -31,6 +31,8 @@ namespace medcenter_backend.Models
     public enum TipoPerfil
     {
         Paciente,
+        Medico,
+        Clinica,
         Admin
     }
 }
