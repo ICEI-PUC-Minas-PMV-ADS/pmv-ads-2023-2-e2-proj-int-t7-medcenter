@@ -1,0 +1,100 @@
+﻿@model ContactViewModel
+@{
+    ViewData["Title"] = "Empresas";
+}
+
+<h1>Venha ser Parceiro Medcenter</h1>
+
+@if(ViewData["Message"]!= null)
+{
+    <div class="alert alert-danger" role="alert">
+    @ViewData["Message"]
+    </div>
+}
+<div class="main_empresas">
+    <img class="plano-de-fundo" src="/img/apertodemaos.png">
+    <div class="left_empresas">
+        <h2>Cuidando da saúde da sua empresa </h2>
+        <h3>Conheça as nossas soluções em saúde para atender as necessidades da sua empresa e manter o bem-estar dos seus colaboradores.</h3>
+    </div>
+</div>
+    <!-- Formulário de Preenchimento a Direita -->
+    <form method="post" asp-action="SendContact" autocomplete="off">
+
+        <div class="form-group mb-2">
+            <label asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" type="text">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="Name2"></label>
+            <input class="form-control" asp-for="Name2" type="text">
+            <span asp-validation-for="Name2" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="Phone"></label>
+            <input class="form-control" asp-for="Phone" type="tel">
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-2">
+            <label asp-for="Email"></label>
+            <input class="form-control" asp-for="Email" type="email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    
+        <input type="submit" class="btn btn-lg btn-primary" value="Enviar">
+    </form>
+
+<!-- Rodapé -->
+<footer>
+    <div class="footer">
+        <ul class="footer-institutional">
+            <li>Institucional</li>
+            <li>Conheça o Medcenter</li>
+            <li>Como seus exames são analisados?</li>
+            <li>Canal de Conduta</li>
+            <li>Política de Privacidade</li>
+            <li>Missão, Visão e Valores</li>
+            <li>Políticas de Qualidade</li>
+            <li>Responsabilidade Social</li>
+        </ul>
+        <ul class="footer-exams">
+            <li>Exames</li>
+            <li>Exames laboratoriais</li>
+            <li>Exames por imagem</li>
+        </ul>
+        <ul class="footer-services">
+            <li>Serviços</li>
+            <li>Checkup</li>
+            <li>Atendimento Domiciliar</li>
+            <li>Medicina Personalizada</li>
+        </ul>
+        <ul class="footer-financial">
+            <li>Financeiro</li>
+            <li>Boleto</li>
+            <li>Nota Fiscal</li>
+            <li>Orçamento</li>
+        </ul>
+        <div class="footer-contact-us">
+            <h3>Fale conosco</h3>
+            <p>
+                (31) xxxx xxxx <img src="https://i.pinimg.com/originals/67/8b/20/678b20b7e76e3c81baa4f8c6ee1bc656.png" width="20" height="20" alt="icone do whatsapp">
+            </p>
+            <p>Segunda a sexta-feira - 6h às 20h</p>
+            <p>Sábado e feriados - 6h às 18h</p>
+            <p>Domingo - 7h às 13h</p>
+            <img src="https://imagepng.org/facebook-icone/facebook-icone-icon-1/" width="30" height="30" alt="icone do facebook"><img src="https://imagepng.org/wp-content/uploads/2017/08/instagram-icone-icon-4.png" width="30" height="30" alt="icone do instagram">
+            <h3>Unidades</h3>
+        </div>
+    </div>
+</footer>
+<ul class="footer-end">
+    <li>Plataforma desenvolvida pelos alunos de Análise e desenvolvimento de Sistema da PUC Minas - 2023</li>
+    <li>Medcenter - 2023</li>
+</ul>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}
