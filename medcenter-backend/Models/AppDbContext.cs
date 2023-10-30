@@ -11,5 +11,6 @@ namespace medcenter_backend.Models
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Dependente> Dependentes { get; set; }
 
+        public DbSet<Exame> Exames { get; set; }
     }
 }

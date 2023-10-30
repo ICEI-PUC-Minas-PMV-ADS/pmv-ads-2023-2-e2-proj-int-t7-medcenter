@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Clinico";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exames</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/exames.css">
+    <link rel="stylesheet" href="~/css/reset_exames.css">
+</head>
+<body>
+    <section class="container__pesquisar">
+        <div class="cabecalho__pesquisar">
+            <h1 class="exames__titulo">Encontre o seu exame!</h1>
+            <input type="search" class="barra__pesquisar" placeholder="Pesquisar exame">
+            <div class="links__exames">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Index">Todos</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Imagem">Imagem</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Clinico">Análise Clínica</a>
+            </div>
+        </div>
+    </section>
+
+<section class="exames">
+    <ul class="exames__lista">
+        <li class="exames__item">
+            <h3>Ácido Úrico</h3>
+            <p>O ácido úrico é o produto final do metabolismo das purinas, estando elevado em várias condições clínicas além da gota. Somente 10% dos pacientes com hiperuricemia tem gota. </p>
+            <a href="#" class="botao__agendar">Agendar</a>
+        </li>
+        <li class="exames__item">
+            <h3>Albumina</h3>
+            <p>É o nome dado à detecção de pequenas quantidades de proteínas na urina (30 a 300 mg/24 horas) que tem importância no diagnóstico e na evolução da nefropatia diabética, por indicar lesão potencialmente reversível.</p>
+            <a href="#" class="botao__agendar">Agendar</a>
+        </li>
+        <li class="exames__item">
+            <h3>Biópsia</h3>
+            <p> É um exame que consiste na retirada de um fragmento de uma parte do corpo (biópsia incisional) ou mesmo de um órgão ou lesão como um todo (biópsia excisional). Na maioria das vezes, quando usamos o termo “biópsia”, estamos nos referindo a biópsia incisional.</p>
+            <a href="#" class="botao__agendar">Agendar</a>
+        </li>
+        <li class="exames__item">
+            <h3>Cálcio</h3>
+            <p>O exame de cálcio no sangue é feito para triagem, diagnóstico e monitoramento de várias condições relacionadas aos ossos, coração, nervos, rins e dentes. </p>
+            <a href="#" class="botao__agendar">Agendar</a>
+        </li>
+        <li class="exames__item">
+            <h3>Chumbo</h3>
+            <p> Este exame serve para a monitorização biológica de indivíduos expostos ao chumbo e para o diagnóstico de intoxicação acidental por esse elemento, que possui efeito acumulativo e é amplamente distribuído no meio ambiente.</p>
+            <a href="#" class="botao__agendar">Agendar</a>
+        </li>
+        <li class="exames__item">
+            <h3>Cloretos</h3>
+            <p> Cloretos, cloro ou cloremia é uma análise laboratorial usada para avaliação de distúrbios do equilíbrio hidroeletrolítico e ácido básico.</p>
+            <a href="#" class="botao__agendar">Agendar</a>
+        </li>
+        <li class="exames__item">
+            <h3>Colesterol</h3>
+            <p>O colesterol é um tipo de gordura que tem um papel fundamental na nossa saúde. Ele participa de diversas funções importantes no organismo, desde a produção de certos hormônios até ajudar na formação das membranas de todas as nossas células. </p>
+            <a href="#" class="botao__agendar">Agendar</a>
+        </li>
+        <li class="exames__item">
+            <h3>Covid-19</h3>
+            <p>O Teste Sorológico para COVID-19 - IgA é indicado para pacientes com suspeita de COVID-19 com 8 ou mais dias de sintomas. Idealmente, deve ser solicitado junto com a sorologia IgG, para melhor interpretação do resultado.</p>
+            <a href="#" class="botao__agendar">Agendar</a>
+        </li>
+        <li class="exames__item">
+            <h3>Creatinina</h3>
+            <p> A creatinina é um composto originado da creatina e que é filtrado e eliminado pelos rins. Então medir as taxas dessa substância no sangue é uma maneira de avaliar a saúde renal de um paciente.</p>
+            <a href="#" class="botao__agendar">Agendar</a>
+        </li>
+        <!--<li class="exames__item">
+          <h3>Creatinina</h3>
+          <p></p>
+          <a href="#" class="botao__agendar">Agendar</a>
+        </li>-->
+    </ul>
+</section>
+</body>
+</html>

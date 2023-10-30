@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Imagem";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exames</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/exames.css">
+    <link rel="stylesheet" href="~/css/reset_exames.css">
+</head>
+<body>
+    <section class="container__pesquisar">
+        <div class="cabecalho__pesquisar">
+            <h1 class="exames__titulo">Encontre o seu exame!</h1>
+            <input type="search" class="barra__pesquisar" placeholder="Pesquisar exame">
+            <div class="links__exames">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Index">Todos</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Imagem">Imagem</a>
+                <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Clinico">Análise Clínica</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="exames">
+        <ul class="exames__lista">
+            <li class="exames__item">
+                <h3>Radiografia Abdome</h3>
+                <p>O Raio-X é um exame de imagem não-invasivo, que funciona usando radiação em baixas doses para identificar rapidamente alterações na estrutura de ossos e de órgãos.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Radiografia Antebraço</h3>
+                <p>O Raio-X é um exame de imagem não-invasivo, que funciona usando radiação em baixas doses para identificar rapidamente alterações na estrutura de ossos e de órgãos.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Radiografia Bacia</h3>
+                <p>O Raio-X é um exame de imagem não-invasivo, que funciona usando radiação em baixas doses para identificar rapidamente alterações na estrutura de ossos e de órgãos.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Radiografia Braço</h3>
+                <p>O Raio-X é um exame de imagem não-invasivo, que funciona usando radiação em baixas doses para identificar rapidamente alterações na estrutura de ossos e de órgãos.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Radiografia Coluna Cervical</h3>
+                <p>O Raio-X é um exame de imagem não-invasivo, que funciona usando radiação em baixas doses para identificar rapidamente alterações na estrutura de ossos e de órgãos.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Radiografia Coluna Dorsal</h3>
+                <p>O Raio-X é um exame de imagem não-invasivo, que funciona usando radiação em baixas doses para identificar rapidamente alterações na estrutura de ossos e de órgãos.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Ressonância Magnética Abdome</h3>
+                <p>A ressonância magnética é um exame de imagem que utiliza ondas eletromagnéticas para auxiliar em um diagnóstico mais preciso.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Ressonância Magnética Crânio</h3>
+                <p>A ressonância magnética é um exame de imagem que utiliza ondas eletromagnéticas para auxiliar em um diagnóstico mais preciso.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Ressonância Magnética Tórax</h3>
+                <p>A ressonância magnética é um exame de imagem que utiliza ondas eletromagnéticas para auxiliar em um diagnóstico mais preciso.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Tomografia Computadorizada Abdome</h3>
+                <p>A tomografia computadorizada é um exame de imagem que utiliza radiação ionizante para auxiliar em um diagnóstico mais preciso e ter uma visão mais detalhada dos orgãos internos e esqueleto.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Tomografia Computadorizada Crânio</h3>
+                <p>A tomografia computadorizada é um exame de imagem que utiliza radiação ionizante para auxiliar em um diagnóstico mais preciso e ter uma visão mais detalhada dos orgãos internos e esqueleto.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Tomografia Computadorizada Tórax</h3>
+                <p>A tomografia computadorizada é um exame de imagem que utiliza radiação ionizante para auxiliar em um diagnóstico mais preciso e ter uma visão mais detalhada dos orgãos internos e esqueleto.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Ultrassonografia Abdominal</h3>
+                <p>A ultrassonografia é um exame que utiliza ondas sonoras para auxiliar em um diagnóstico rápido e preciso. Muito utilizado em exames pré-natal e avaliação de parte mole do corpo.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Ultrassonografia Obstétrico</h3>
+                <p>A ultrassonografia é um exame que utiliza ondas sonoras para auxiliar em um diagnóstico rápido e preciso. Muito utilizado em exames pré-natal e avaliação de parte mole do corpo.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <li class="exames__item">
+                <h3>Ultrassonografia Pescoço</h3>
+                <p>A ultrassonografia é um exame que utiliza ondas sonoras para auxiliar em um diagnóstico rápido e preciso. Muito utilizado em exames pré-natal e avaliação de parte mole do corpo.</p>
+                <a href="#" class="botao__agendar">Agendar</a>
+            </li>
+            <!--<li class="exames__item">
+              <h3>Creatinina</h3>
+              <p></p>
+              <a href="#" class="botao__agendar">Agendar</a>
+            </li>-->
+        </ul>
+    </section>
+</body>
+</html>
