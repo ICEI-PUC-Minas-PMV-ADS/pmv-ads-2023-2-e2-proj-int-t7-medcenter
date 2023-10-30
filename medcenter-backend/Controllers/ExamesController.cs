@@ -23,13 +23,11 @@ namespace medcenter_backend.Controllers
         {
               return View(await _context.Exames.ToListAsync());
         }
-
         // GET: Imagem
         public async Task<IActionResult> Imagem() {
             return View(await _context.Exames.ToListAsync());
         }
-
-        // GET: Clinico
+        // GET: CLinico
         public async Task<IActionResult> Clinico() {
             return View(await _context.Exames.ToListAsync());
         }
@@ -63,7 +61,7 @@ namespace medcenter_backend.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Descricao,Data,TipoExame,Profissional")] Exame exame)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao")] Exame exame)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +93,7 @@ namespace medcenter_backend.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Descricao,Data,TipoExame,Profissional")] Exame exame)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Descricao")] Exame exame)
         {
             if (id != exame.Id)
             {
