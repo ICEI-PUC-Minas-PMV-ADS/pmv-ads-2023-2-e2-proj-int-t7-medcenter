@@ -22,7 +22,7 @@ namespace medcenter_backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("medcenter_backend.Models.Exame", b =>
+            modelBuilder.Entity("medcenter_backend.Models.Dependente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,15 +30,42 @@ namespace medcenter_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Paciente")
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataNascimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PacienteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TipoExame")
-                        .HasColumnType("int");
+                    b.Property<string>("Telefone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Exames");
+                    b.HasIndex("PacienteId");
+
+                    b.ToTable("Dependentes");
+                });
+
+            modelBuilder.Entity("medcenter_backend.Models.Paciente", b =>
+                {
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UsuarioId");
+
+                    b.ToTable("Pacientes");
                 });
 
             modelBuilder.Entity("medcenter_backend.Models.Usuario", b =>
@@ -77,6 +104,38 @@ namespace medcenter_backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("medcenter_backend.Models.Dependente", b =>
+                {
+                    b.HasOne("medcenter_backend.Models.Paciente", "Paciente")
+                        .WithMany("Dependentes")
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Paciente");
+                });
+
+            modelBuilder.Entity("medcenter_backend.Models.Paciente", b =>
+                {
+                    b.HasOne("medcenter_backend.Models.Usuario", "Usuario")
+                        .WithOne("Paciente")
+                        .HasForeignKey("medcenter_backend.Models.Paciente", "UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("medcenter_backend.Models.Paciente", b =>
+                {
+                    b.Navigation("Dependentes");
+                });
+
+            modelBuilder.Entity("medcenter_backend.Models.Usuario", b =>
+                {
+                    b.Navigation("Paciente");
                 });
 #pragma warning restore 612, 618
         }
