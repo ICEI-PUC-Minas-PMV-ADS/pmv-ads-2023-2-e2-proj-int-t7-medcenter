@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - medcenter_backend</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/empresas.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/medcenter_backend.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 </head>
@@ -24,7 +25,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="ResultadosProcedimentos" asp-action="Index">Resultados de Procedimentos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Procedimentos" asp-action="Index">Procedimentos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Unidades" asp-action="Index">Unidades</a>
@@ -33,7 +34,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Index">Exames</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Empresas" asp-action="Index">Empresas</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Empresas">Empresas</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -41,8 +42,7 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                Olá, @User.Identity.Name <a class="nav-link text-dark" asp-area="" 
-                                asp-controller="Usuarios" asp-action="Logout">Sair</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair</a>
                             </li>
                         }
                         else
@@ -56,6 +56,10 @@
                         }
                     </ul>
                 </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <img class="profile-icon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" width="100" height="100" alt="Icone Medcenter">   
+                }
             </div>
         </nav>
     </header>
