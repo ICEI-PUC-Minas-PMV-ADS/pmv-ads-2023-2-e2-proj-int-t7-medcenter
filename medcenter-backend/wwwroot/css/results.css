@@ -17,7 +17,7 @@
     border-radius: 4rem;
     min-width: 30vw ;
     height: 3.25rem;
-    border-width: 5;
+    border-width: 5px;
     border-color: #3CAEC7;
     color: black;
     transition-duration: .3s;
@@ -64,7 +64,7 @@
 
 .userimg{
     float: left;
-    padding: 1% 3% 1% 1%;;
+    padding: 1% 3% 1% 1%;
     display: block;
     margin: auto;
 }
