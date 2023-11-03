@@ -4,8 +4,13 @@
     margin-right: 15%;
     padding-bottom: 1%;
     
-}
 
+    
+}
+.container-fluid {
+    width: 100%;
+    
+}
 .links{
   display: flex;
   justify-content: space-around;
@@ -146,4 +151,11 @@
 
     .h3{
         margin: 0% 0% 0% 0%;
+    }
+    body {
+        width: 100%;
+    }
+    .pb-3 {
+        width: 60%;
+        position:fixed;
     }
