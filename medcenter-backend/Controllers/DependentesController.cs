@@ -47,7 +47,7 @@ namespace medcenter_backend.Controllers
         // GET: Dependentes/Create
         public IActionResult Create()
         {
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "UsuarioId", "UsuarioId");
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Id");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace medcenter_backend.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "UsuarioId", "UsuarioId", dependente.PacienteId);
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Id", dependente.PacienteId);
             return View(dependente);
         }
 
@@ -81,7 +81,7 @@ namespace medcenter_backend.Controllers
             {
                 return NotFound();
             }
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "UsuarioId", "UsuarioId", dependente.PacienteId);
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Id", dependente.PacienteId);
             return View(dependente);
         }
 
@@ -117,7 +117,7 @@ namespace medcenter_backend.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "UsuarioId", "UsuarioId", dependente.PacienteId);
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Id", dependente.PacienteId);
             return View(dependente);
         }
 

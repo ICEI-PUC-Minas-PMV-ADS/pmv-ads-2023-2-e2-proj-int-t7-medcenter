@@ -64,7 +64,9 @@
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <img class="profile-icon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" width="100" height="100" alt="Icone Medcenter">   
+                    <a class="nav-perfil-icon" asp-controller="Pacientes" asp-action="Index">
+                        <img class="profile-icon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" width="100" height="100" alt="Icone Medcenter">
+                    </a>
                 }
             </div>
         </nav>

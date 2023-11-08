@@ -128,17 +128,46 @@ namespace medcenter_backend.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Create([Bind("Id,Nome,Telefone,Cpf,DataNascimento,Email,Senha,Perfil")] Usuario usuario)
         {
+            // Verifique se o e-mail já está em uso
+            if (await EmailExists(usuario.Email))
+            {
+                ModelState.AddModelError("Email", "Este e-mail já está em uso.");
+                return View(usuario);
+            }
+
             if (ModelState.IsValid)
             {
                 usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
+
+                // Crie automaticamente um paciente associado ao usuário
+                var novoPaciente = new Paciente
+                {
+                    Nome = usuario.Nome,
+                    Telefone = usuario.Telefone,
+                    Cpf = usuario.Cpf,
+                    DataNascimento = usuario.DataNascimento,
+                    Email = usuario.Email,
+                    UsuarioId = usuario.Id
+                };
+
+                _context.Add(novoPaciente);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(usuario);
         }
 
-        // GET: Usuarios/Edit/5
+        // Método para verificar se o e-mail já existe
+        private async Task<bool> EmailExists(string email)
+        {
+            return await _context.Usuarios.AnyAsync(u => u.Email == email);
+        }
+
+        // GET: Usuarios/Edit/Id
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Usuarios == null)
@@ -154,7 +183,7 @@ namespace medcenter_backend.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Edit/5
+        // POST: Usuarios/Edit/Id
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -190,7 +219,7 @@ namespace medcenter_backend.Controllers
             return View(usuario);
         }
 
-        // GET: Usuarios/Delete/5
+        // GET: Usuarios/Delete/Id
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Usuarios == null)
@@ -208,23 +237,44 @@ namespace medcenter_backend.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Delete/5
+        // POST: Usuarios/Delete/Id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Usuarios == null)
             {
-                return Problem("Entity set 'AppDbContext.Usuarios'  is null.");
+                return Problem("Usuário não encontrado para exclusão.");
             }
+
             var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario != null)
+
+            if (usuario == null)
             {
-                _context.Usuarios.Remove(usuario);
+                return RedirectToAction(nameof(Index));
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            // Removendo todos os dependentes associados ao paciente
+            var paciente = await _context.Pacientes.FirstOrDefaultAsync(p => p.UsuarioId == usuario.Id);
+            if (paciente != null)
+            {
+                var dependentes = await _context.Dependentes.Where(d => d.PacienteId == paciente.Id).ToListAsync();
+                _context.Dependentes.RemoveRange(dependentes);
+                _context.Pacientes.Remove(paciente);
+            }
+
+            _context.Usuarios.Remove(usuario);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                // Lidar com a exceção de concorrência aqui, se necessário.
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         private bool UsuarioExists(int id)

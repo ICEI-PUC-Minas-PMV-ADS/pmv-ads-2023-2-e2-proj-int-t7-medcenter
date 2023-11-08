@@ -1,0 +1,48 @@
+﻿@model medcenter_backend.Models.Paciente
+
+@{
+    ViewData["Title"] = "Perfil do Paciente";
+}
+
+<div class="container">
+    <h1 class="mt-4">Perfil do Paciente</h1>
+
+    <div class="profile-card">
+        <div class="profile-info">
+            <strong>Nome:</strong> @Html.DisplayFor(model => model.Nome) <br />
+            <strong>Telefone:</strong> @Html.DisplayFor(model => model.Telefone) <br />
+            <strong>CPF:</strong> @Html.DisplayFor(model => model.Cpf) <br />
+            <strong>Data de Nascimento:</strong> @Html.DisplayFor(model => model.DataNascimento) <br />
+            <strong>Email:</strong> @Html.DisplayFor(model => model.Email) <br />
+        </div>
+        <div class="profile-actions">
+            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .profile-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-info {
+        flex: 2;
+    }
+
+    .profile-actions {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+</style>
