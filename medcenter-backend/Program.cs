@@ -24,6 +24,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/Usuarios/Login/";
     });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("MedicPolicy", policy => policy.RequireRole("Medico"));
+    options.AddPolicy("ClinicPolicy", policy => policy.RequireRole("Clinica"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
