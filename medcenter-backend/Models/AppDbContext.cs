@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using medcenter_backend.Models;
 
 namespace medcenter_backend.Models
 {
@@ -10,5 +11,7 @@ namespace medcenter_backend.Models
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<Dependente> Dependentes { get; set; }
+        public DbSet<Dependente> Medicos { get; set; }
+        public DbSet<medcenter_backend.Models.Medico> Medico { get; set; }
     }
 }
