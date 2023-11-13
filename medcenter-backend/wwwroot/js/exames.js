@@ -71,8 +71,8 @@ function ExibirExame() {
     for (let x = 0; x < Exame.length; x++) {
         let nome = Exame[x].nome;
         let descricao = Exame[x].descricao;
-        textoHTML += `<li class="exames_item"> <h3><strong>${nome}</strong></h3> ${descricao} <a href="#" class="botao__agendar">Agendar</a> </li>`;
-        var exames_lista = document.getElementById("exames_lista");
-        exames_lista.innerHTML = textoHTML;
+        textoHTML += `<li class="exames__item"> <h3><strong>${nome}</strong></h3> ${descricao} <a href="#" class="botao__agendar">Agendar</a> </li>`;
+        var exames__lista = document.getElementById("exames__lista");
+        exames__lista.innerHTML = textoHTML;
     }
 }

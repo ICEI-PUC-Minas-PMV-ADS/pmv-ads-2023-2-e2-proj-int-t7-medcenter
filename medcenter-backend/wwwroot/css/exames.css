@@ -64,7 +64,7 @@ body {
     padding: 2em 3em 1em 3em;
 }
 
-.exames__lista {
+#exames__lista {
     display: grid;
     grid-template-columns: calc(30% - 1rem) 30% 30%;
     gap: 3rem;
