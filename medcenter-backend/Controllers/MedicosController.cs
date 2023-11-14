@@ -21,25 +21,21 @@ namespace medcenter_backend.Controllers
         // GET: Medicos
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Medico.Include(m => m.Usuario);
+            var appDbContext = _context.Medicos.Include(m => m.Usuario);
             return View(await appDbContext.ToListAsync());
         }
 
         // GET: Medicos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Medico == null)
+            if (id == null || _context.Medicos == null)
             {
                 return NotFound();
             }
 
-            var medico = await _context.Medico
+            var medico = await _context.Medicos
                 .Include(m => m.Usuario)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (medico == null)
-            {
-                return NotFound();
-            }
 
             return View(medico);
         }
@@ -68,31 +64,32 @@ namespace medcenter_backend.Controllers
             return View(medico);
         }
 
-        // GET: Medicos/Edit/5
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Medico == null)
+            if (id == null || _context.Medicos == null)
             {
                 return NotFound();
             }
 
-            var medico = await _context.Medico.FindAsync(id);
-            if (medico == null)
+            var medico = await _context.Medicos.FindAsync(id);
+
+            // Adicione uma verificação para permitir apenas que o médico correspondente edite as informações
+            if (medico != null && medico.UsuarioId == id)
             {
-                return NotFound();
+                ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Cpf", medico.UsuarioId);
+                return View(medico);
             }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Cpf", medico.UsuarioId);
-            return View(medico);
+
+            return NotFound();
         }
 
-        // POST: Medicos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Usuarios/Edit/Id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Telefone,Cpf,DataNascimento,Email,UsuarioId,HoraInicioTrabalho,HoraFimTrabalho,Especialidade")] Medico medico)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Telefone,Cpf,DataNascimento,Email,Senha,Perfil")] Usuario usuario)
         {
-            if (id != medico.Id)
+            if (id != usuario.Id)
             {
                 return NotFound();
             }
@@ -101,12 +98,16 @@ namespace medcenter_backend.Controllers
             {
                 try
                 {
-                    _context.Update(medico);
+                    usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
+                    _context.Update(usuario);
                     await _context.SaveChangesAsync();
+
+                    // Chame o método para criar ou remover o médico
+                    await CriarMedicoAsync(usuario);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MedicoExists(medico.Id))
+                    if (!UsuarioExists(usuario.Id))
                     {
                         return NotFound();
                     }
@@ -117,13 +118,22 @@ namespace medcenter_backend.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UsuarioId"] = new SelectList(_context.Usuarios, "Id", "Cpf", medico.UsuarioId);
-            return View(medico);
+            return View(usuario);
+        }
+
+        private bool UsuarioExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        private Task CriarMedicoAsync(Usuario usuario)
+        {
+            throw new NotImplementedException();
         }
 
         private bool MedicoExists(int id)
         {
-          return _context.Medico.Any(e => e.Id == id);
+            return _context.Medicos.Any(e => e.Id == id);
         }
     }
 }

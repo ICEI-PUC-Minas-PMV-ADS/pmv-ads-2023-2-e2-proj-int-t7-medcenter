@@ -25,11 +25,12 @@ namespace medcenter_backend.Controllers
         // GET: Usuarios
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.Usuarios.ToListAsync());
         }
 
         [AllowAnonymous]
-        public IActionResult AccessDenied() {
+        public IActionResult AccessDenied()
+        {
             return View();
         }
 
@@ -40,7 +41,8 @@ namespace medcenter_backend.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult LoginAdmin() {
+        public IActionResult LoginAdmin()
+        {
             return View();
         }
 
@@ -84,7 +86,7 @@ namespace medcenter_backend.Controllers
             {
                 ViewBag.Message = "Usuario e/ou senha inválidos!";
             }
-                
+
             return View();
         }
 
@@ -183,9 +185,6 @@ namespace medcenter_backend.Controllers
             return View(usuario);
         }
 
-        // POST: Usuarios/Edit/Id
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Telefone,Cpf,DataNascimento,Email,Senha,Perfil")] Usuario usuario)
@@ -202,6 +201,17 @@ namespace medcenter_backend.Controllers
                     usuario.Senha = BCrypt.Net.BCrypt.HashPassword(usuario.Senha);
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
+
+                    // Chame o método para criar ou remover o médico apenas se o tipo de perfil for "Medico"
+                    if (usuario.Perfil == TipoPerfil.Medico)
+                    {
+                        await CriarMedicoAsync(usuario);
+                    }
+                    else
+                    {
+                        // Se o tipo de perfil não for "Medico", remova o médico associado, se existir
+                        await RemoverMedicoAsync(usuario.Id);
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -277,9 +287,44 @@ namespace medcenter_backend.Controllers
             }
         }
 
+        private async Task CriarMedicoAsync(Usuario usuario)
+        {
+            var medicoExistente = await _context.Medicos.FirstOrDefaultAsync(m => m.UsuarioId == usuario.Id);
+
+            if (medicoExistente == null)
+            {
+                var novoMedico = new Medico
+                {
+                    Nome = usuario.Nome,
+                    Telefone = usuario.Telefone,
+                    Cpf = usuario.Cpf,
+                    DataNascimento = usuario.DataNascimento,
+                    Email = usuario.Email,
+                    UsuarioId = usuario.Id,
+                    HoraInicioTrabalho = TimeSpan.FromHours(8),
+                    HoraFimTrabalho = TimeSpan.FromHours(17),
+                    Especialidade = Especialidade.ClinicoGeral
+                };
+
+                _context.Add(novoMedico);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        private async Task RemoverMedicoAsync(int usuarioId)
+        {
+            var medicoExistente = await _context.Medicos.FirstOrDefaultAsync(m => m.UsuarioId == usuarioId);
+
+            if (medicoExistente != null)
+            {
+                _context.Medicos.Remove(medicoExistente);
+                await _context.SaveChangesAsync();
+            }
+        }
+
         private bool UsuarioExists(int id)
         {
-          return _context.Usuarios.Any(e => e.Id == id);
+            return _context.Usuarios.Any(e => e.Id == id);
         }
     }
 }
