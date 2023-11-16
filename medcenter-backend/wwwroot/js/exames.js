@@ -68,14 +68,11 @@ var Exame = [
 
 function ExibirExame() {
     var textoHTML = "";
-    
     for (let x = 0; x < Exame.length; x++) {
         let nome = Exame[x].nome;
         let descricao = Exame[x].descricao;
         textoHTML += `<li class="exames__item"> <h3><strong>${nome}</strong></h3> ${descricao} <a href="#" class="botao__agendar">Agendar</a> </li>`;
-        var normalized = textoHTML.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         var exames__lista = document.getElementById("exames__lista");
-
-        exames__lista.innerHTML = normalized;
+        exames__lista.innerHTML = textoHTML;
     }
 }
