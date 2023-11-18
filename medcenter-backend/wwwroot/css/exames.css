@@ -108,10 +108,6 @@ h3 {
 }
 
 
-.modalTitle {
-    font-size: 1.5em;
-    text-align: center;
-}
 
 .modalContent {
     display: flex;
@@ -122,8 +118,8 @@ h3 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 2px solid #fff;
-    border-radius: 21px;
+    border: 1px solid var(--cor-borda-box);
+    border-radius: 16px;
     position: absolute;
     overflow: auto;
     z-index: 10;
@@ -151,17 +147,19 @@ body > *:not(.display-modal) {
     display: flex;
     justify-content: flex-end;
     z-index: 11;
-    top: 7px;
+    top: 1px;
     right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
-    .close-modal button {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border-color: #fff;
-        background-color: #fff;
-    }
+.close-modal button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-color: #fff;
+    background-color: #fff;
+}
 
 .close {
     text-decoration: solid;
