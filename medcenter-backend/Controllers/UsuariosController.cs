@@ -348,14 +348,19 @@ namespace medcenter_backend.Controllers
             // Verifique se o usuário é um médico e remova, se existir
             await RemoverMedicoAsync(usuarioId);
 
-            
             await RemoverClinicaAsync(usuarioId);
             
         }
 
-        private Task RemoverMedicoAsync(int usuarioId)
+        private async Task RemoverMedicoAsync(int usuarioId)
         {
-            throw new NotImplementedException();
+            var medicoExistente = await _context.Medicos.FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
+
+            if (medicoExistente != null)
+            {
+                _context.Medicos.Remove(medicoExistente);
+                await _context.SaveChangesAsync();
+            }
         }
 
         
