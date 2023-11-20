@@ -1,0 +1,35 @@
+﻿@model IEnumerable<medcenter_backend.Models.Clinica>
+
+<h1>Lista de Clínicas</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Endereço</th>
+            <th>Horário de Início</th>
+            <th>Horário de Fim</th>
+            <th>Usuário Responsável</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var clinica in Model)
+        {
+            <tr>
+                <td>@clinica.Nome</td>
+                <td>@clinica.Telefone</td>
+                <td>@clinica.Email</td>
+                <td>@clinica.Endereço</td>
+                <td>@clinica.HoraInicioFuncionamento</td>
+                <td>@clinica.HoraFimFuncionamento</td>
+                <td>@clinica.Usuario.Nome</td>
+                <td>
+                    <a asp-controller="Clinicas" asp-action="Edit" asp-route-id="@clinica.Id">Editar</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

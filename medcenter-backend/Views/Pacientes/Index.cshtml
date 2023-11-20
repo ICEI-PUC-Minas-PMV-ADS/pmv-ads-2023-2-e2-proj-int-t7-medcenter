@@ -1,0 +1,64 @@
+﻿@model medcenter_backend.Models.Paciente
+
+<h1>Perfil do Paciente</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Nome:</dt>
+        <dd class="col-sm-10">@Model.Nome</dd>
+
+        <dt class="col-sm-2">Telefone:</dt>
+        <dd class="col-sm-10">@Model.Telefone</dd>
+
+        <dt class="col-sm-2">CPF:</dt>
+        <dd class="col-sm-10">@Model.Cpf</dd>
+
+        <dt class="col-sm-2">Data de Nascimento:</dt>
+        <dd class="col-sm-10">@Model.DataNascimento.ToShortDateString()</dd>
+
+        <dt class="col-sm-2">E-mail:</dt>
+        <dd class="col-sm-10">@Model.Email</dd>
+    </dl>
+</div>
+
+<h2>Dependentes</h2>
+@if (Model.Dependentes != null && Model.Dependentes.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+                <th>Data de Nascimento</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dependente in Model.Dependentes)
+            {
+                <tr>
+                    <td>@dependente.Nome</td>
+                    <td>@dependente.Telefone</td>
+                    <td>@dependente.Cpf</td>
+                    <td>@dependente.DataNascimento.ToShortDateString()</td>
+                    <td>@dependente.Email</td>
+                    <td>
+                        <a asp-controller="Dependentes" asp-action="Edit" asp-route-id="@dependente.Id">Editar</a> |
+                        <a asp-controller="Dependentes" asp-action="Delete" asp-route-id="@dependente.Id">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nenhum dependente cadastrado.</p>
+}
+
+<!-- Links para Adicionar e Editar Dependentes -->
+<div>
+    <a asp-controller="Dependentes" asp-action="Create">Adicionar Dependente</a>
+</div>

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using medcenter_backend.Models;
+using System.Security.Claims;
 
 namespace medcenter_backend.Controllers
 {
@@ -47,7 +48,14 @@ namespace medcenter_backend.Controllers
         // GET: Dependentes/Create
         public IActionResult Create()
         {
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "UsuarioId", "UsuarioId");
+            // Obter o ID do usuário logado
+            var userEmail = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var pacienteId = _context.Pacientes
+                .Where(p => p.Usuario.Email == userEmail)
+                .Select(p => p.Id)
+                .FirstOrDefault();
+
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Id", pacienteId);
             return View();
         }
 
@@ -60,15 +68,26 @@ namespace medcenter_backend.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Definir automaticamente o PacienteId com base no usuário logado
+                var userEmail = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var paciente = _context.Pacientes.FirstOrDefault(p => p.Usuario.Email == userEmail);
+
+                if (paciente != null)
+                {
+                    dependente.PacienteId = paciente.Id;
+                }
+
                 _context.Add(dependente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Pacientes");
             }
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "UsuarioId", "UsuarioId", dependente.PacienteId);
+
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Id", dependente.PacienteId);
             return View(dependente);
         }
 
         // GET: Dependentes/Edit/5
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Dependentes == null)
@@ -76,12 +95,15 @@ namespace medcenter_backend.Controllers
                 return NotFound();
             }
 
-            var dependente = await _context.Dependentes.FindAsync(id);
+            var dependente = await _context.Dependentes
+                .Include(d => d.Paciente)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (dependente == null)
             {
                 return NotFound();
             }
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "UsuarioId", "UsuarioId", dependente.PacienteId);
+
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Id", dependente.PacienteId);
             return View(dependente);
         }
 
@@ -97,10 +119,20 @@ namespace medcenter_backend.Controllers
                 return NotFound();
             }
 
+            // Exclua a vinculação do campo PacienteId
+            ModelState.Remove("PacienteId");
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    // Obtenha o dependente original do banco de dados
+                    var originalDependente = await _context.Dependentes.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
+
+                    // Atribua o PacienteId original ao modelo
+                    dependente.PacienteId = originalDependente.PacienteId;
+
+                    // Atualize as demais propriedades
                     _context.Update(dependente);
                     await _context.SaveChangesAsync();
                 }
@@ -115,9 +147,9 @@ namespace medcenter_backend.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Pacientes");
             }
-            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "UsuarioId", "UsuarioId", dependente.PacienteId);
+            ViewData["PacienteId"] = new SelectList(_context.Pacientes, "Id", "Id", dependente.PacienteId);
             return View(dependente);
         }
 
@@ -156,7 +188,7 @@ namespace medcenter_backend.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Pacientes");
         }
 
         private bool DependenteExists(int id)

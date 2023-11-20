@@ -1,0 +1,70 @@
+﻿@model medcenter_backend.Models.Consulta
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Consulta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if (ViewBag.Pacientes != null && ((SelectList)ViewBag.Pacientes).Count() > 0)
+            {
+                <div class="form-group">
+                    <label asp-for="PacienteId" class="control-label"></label>
+                    <select asp-for="PacienteId" class="form-control" asp-items="ViewBag.Pacientes"></select>
+                </div>
+            }
+
+            @if (ViewBag.Dependentes != null && ((SelectList)ViewBag.Dependentes).Count() > 0)
+            {
+                <div class="form-group">
+                    <label asp-for="DependenteId" class="control-label"></label>
+                    <select asp-for="DependenteId" class="form-control" asp-items="ViewBag.Dependentes">
+                        <option value="">-- Selecione um Dependente --</option>
+                    </select>
+                </div>
+            }
+
+            @if (ViewBag.Medicos != null && ((SelectList)ViewBag.Medicos).Count() > 0)
+            {
+                <div class="form-group">
+                    <label asp-for="MedicoId" class="control-label"></label>
+                    <select asp-for="MedicoId" class="form-control" asp-items="ViewBag.Medicos"></select>
+                </div>
+            }
+
+            @if (ViewBag.Clinicas != null && ((SelectList)ViewBag.Clinicas).Count() > 0)
+            {
+                <div class="form-group">
+                    <label asp-for="ClinicaId" class="control-label"></label>
+                    <select asp-for="ClinicaId" class="form-control" asp-items="ViewBag.Clinicas"></select>
+                </div>
+            }
+
+            <div class="form-group">
+                <label asp-for="DataConsulta" class="control-label"></label>
+                <input asp-for="DataConsulta" class="form-control" />
+                <span asp-validation-for="DataConsulta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

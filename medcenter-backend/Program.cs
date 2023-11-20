@@ -24,6 +24,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/Usuarios/Login/";
     });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("MedicPolicy", policy => policy.RequireRole("Medico"));
+    options.AddPolicy("ClinicPolicy", policy => policy.RequireRole("Clinica"));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,6 +49,16 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "Paciente",
+    pattern: "Paciente/Index",
+    defaults: new { controller = "Paciente", action = "Index" }
+);
+
+app.MapControllerRoute(
+    name: "ClinicaEdit",
+    pattern: "Clinicas/Edit/{id?}",
+    defaults: new { controller = "Clinicas", action = "Edit" });
 
 app.MapControllerRoute(
     name: "default",

@@ -26,7 +26,7 @@ namespace medcenter_backend.Models
         [Display(Name = "Responsável")]
         public int PacienteId { get; set; }
 
-        [ForeignKey("PacienteId")]
         public Paciente Paciente { get; set; }
+
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using medcenter_backend.Models;
 
@@ -11,9 +12,11 @@ using medcenter_backend.Models;
 namespace medcenter_backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231120011906_M16-AddConsultas")]
+    partial class M16AddConsultas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +69,7 @@ namespace medcenter_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClinicaId")
+                    b.Property<int?>("ClinicaId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DataConsulta")
@@ -75,10 +78,10 @@ namespace medcenter_backend.Migrations
                     b.Property<int?>("DependenteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("MedicoId")
+                    b.Property<int?>("MedicoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PacienteId")
+                    b.Property<int?>("PacienteId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -259,9 +262,7 @@ namespace medcenter_backend.Migrations
                 {
                     b.HasOne("medcenter_backend.Models.Clinica", "Clinica")
                         .WithMany()
-                        .HasForeignKey("ClinicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClinicaId");
 
                     b.HasOne("medcenter_backend.Models.Dependente", "Dependente")
                         .WithMany()
@@ -269,15 +270,11 @@ namespace medcenter_backend.Migrations
 
                     b.HasOne("medcenter_backend.Models.Medico", "Medico")
                         .WithMany()
-                        .HasForeignKey("MedicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MedicoId");
 
                     b.HasOne("medcenter_backend.Models.Paciente", "Paciente")
                         .WithMany()
-                        .HasForeignKey("PacienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PacienteId");
 
                     b.Navigation("Clinica");
 

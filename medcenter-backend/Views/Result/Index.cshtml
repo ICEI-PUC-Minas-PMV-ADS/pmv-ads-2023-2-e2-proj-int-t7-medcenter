@@ -1,0 +1,94 @@
+﻿<link href="~/css/results.css" rel="stylesheet" />
+<link href="~/js/results.js" rel="stylesheet" />
+
+<body>
+     
+    <section class="container">
+        <div class="links">
+            <button class="elipse-btn selected" id="link01" href="#" id='link01'>Pedidos em Aberto</button>
+
+            <button class="elipse-btn" id="link02" href="#" id='link02'>Procedimentos Agendados</button>
+
+            <button class="elipse-btn" id="link03" href="#" id='link03'>Procedimentos Realizados</button>
+        </div>
+
+        <div class="menu01" id='menu01'>
+            <div class="box">
+                <img src="/img/User_icon_small.png" alt="User-Icon" class="userimg">
+
+                <p><strong>Nome do Usuario</strong></p>
+                <p>Numero de Cadastro</p>
+            </div>
+
+            <section class="container">
+                <div class="vazio">
+                    <div class="circle">
+                        <img src="/img/alert_icon_small.png" alt="alert-icon" class="alert">
+                    </div>
+                </div>
+
+                <div class="text">
+                    <p>Você não possui pedidos em aberto.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="menu02 hidden" id='menu02'>
+            <div class="box1">
+                <aside class="userimg">
+                    <img src="/img/User_icon_small.png" alt="User-Icon">
+                </aside>
+                <p><strong>Nome do Usuario 1</strong></p>
+                <p>Numero de Cadastro</p>
+            </div>
+        </div>
+
+        <div class="menu03 hidden" id='menu03'>
+            <div class="box2">
+                <aside class="userimg">
+                    <img src="/img/User_icon_small.png" alt="User-Icon">
+                </aside>
+                <p><strong>Nome do Usuario 2</strong></p>
+                <p>Numero de Cadastro</p>
+            </div>
+
+            <section class="container">
+                <div class="vazio">
+                    <div class="circle">
+                        <img src="/img/alert_icon_small.png" alt="alert-icon" class="alert">
+                    </div>
+                </div>
+
+                <div class="text">
+                    <p>Você não possui pedidos em aberto.</p>
+                </div>
+            </section>
+
+        </div>
+        </div>
+
+    </section>
+
+    <section class="resultados hidden" id='resultados'>
+        <div class="pedido">
+            <div class="PPDU">
+                <div class="text_box"> <h3><strong>Pedido xxxxxxxx</strong></h3></div>
+                <div class="text_box"></div>
+                <div class="text_box"></div>
+                <div class="text_box"><p>Procedimento: Hemograma completo</p></div>
+                <div class="text_box"><p>Data: 08/08/2023 - 20:30 am</p></div>
+                <div class="text_box"><p>Unidade: Medcenter Santa Efigenia</p></div>
+            </div>
+
+            <div class="PR">
+                <p>Profissonal Solicitante: Doutor Nome Completo do Medico</p>
+                <button class="pdf">Resultado</button>
+            </div>
+        </div>
+    </section>               
+             
+            </div>
+        </div>
+</body>
+<script src="~/js/results.js"></script>
+<script src="~/js/home.js"></script>
