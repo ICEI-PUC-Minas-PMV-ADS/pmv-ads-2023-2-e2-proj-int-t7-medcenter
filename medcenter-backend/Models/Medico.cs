@@ -19,11 +19,10 @@ namespace medcenter_backend.Models
         public int UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
 
-        // Campos de horário de trabalho
         public TimeSpan HoraInicioTrabalho { get; set; }
         public TimeSpan HoraFimTrabalho { get; set; }
 
-        // Especialidade do médico
+
         public Especialidade Especialidade { get; set; }
     }
 

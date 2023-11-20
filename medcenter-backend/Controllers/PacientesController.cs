@@ -19,11 +19,33 @@ namespace medcenter_backend.Controllers
             _context = context;
         }
 
-        // GET: Pacientes
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var appDbContext = _context.Pacientes.Include(p => p.Usuario);
-            return View(await appDbContext.ToListAsync());
+            var userEmail = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            // Obtem o ID do usuário pelo email
+            var userId = _context.Usuarios
+                                .Where(u => u.Email == userEmail)
+                                .Select(u => u.Id)
+                                .FirstOrDefault();
+
+            if (userId == 0)
+            {
+                // Usuário não encontrado
+                return NotFound();
+            }
+
+            // Carregue o paciente e inclua os dependentes
+            var paciente = _context.Pacientes
+                .Include(p => p.Dependentes)  // Certifique-se de incluir os dependentes
+                .FirstOrDefault(p => p.UsuarioId == userId);
+
+            if (paciente == null)
+            {
+                return NotFound();
+            }
+
+            return View(paciente);
         }
 
         // GET: Pacientes/Edit/5

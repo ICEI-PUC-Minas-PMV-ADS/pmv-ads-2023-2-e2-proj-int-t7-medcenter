@@ -1,0 +1,56 @@
+﻿@model medcenter_backend.Models.Consulta
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Consulta</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="Paciente.Nome" class="control-label"></label>
+                <input asp-for="Paciente.Nome" class="form-control" readonly />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Dependente.Nome" class="control-label"></label>
+                <input asp-for="Dependente.Nome" class="form-control" readonly />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Clinica.Nome" class="control-label"></label>
+                <input asp-for="Clinica.Nome" class="form-control" readonly />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Medico.Nome" class="control-label"></label>
+                <input asp-for="Medico.Nome" class="form-control" readonly />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DataConsulta" class="control-label"></label>
+                <input asp-for="DataConsulta" class="form-control" />
+                <span asp-validation-for="DataConsulta" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -49,6 +49,16 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllerRoute(
+    name: "Paciente",
+    pattern: "Paciente/Index",
+    defaults: new { controller = "Paciente", action = "Index" }
+);
+
+app.MapControllerRoute(
+    name: "ClinicaEdit",
+    pattern: "Clinicas/Edit/{id?}",
+    defaults: new { controller = "Clinicas", action = "Edit" });
 
 app.MapControllerRoute(
     name: "default",

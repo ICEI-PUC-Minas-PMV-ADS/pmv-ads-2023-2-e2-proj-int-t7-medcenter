@@ -202,15 +202,21 @@ namespace medcenter_backend.Controllers
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
 
-                    // Chame o método para criar ou remover o médico apenas se o tipo de perfil for "Medico"
+                    // Chame o método para criar ou remover a entidade associada ao perfil
                     if (usuario.Perfil == TipoPerfil.Medico)
                     {
                         await CriarMedicoAsync(usuario);
                     }
+                    
+                    else if (usuario.Perfil == TipoPerfil.Clinica)
+                    {
+                        await CriarClinicaAsync(usuario);
+                    }
+                    
                     else
                     {
-                        // Se o tipo de perfil não for "Medico", remova o médico associado, se existir
-                        await RemoverMedicoAsync(usuario.Id);
+                        // Se o tipo de perfil não for "Medico" nem "Clinica", remova a entidade associada, se existir
+                        await RemoverEntidadeAsync(usuario.Id);
                     }
                 }
                 catch (DbUpdateConcurrencyException)
@@ -228,6 +234,7 @@ namespace medcenter_backend.Controllers
             }
             return View(usuario);
         }
+
 
         // GET: Usuarios/Delete/Id
         public async Task<IActionResult> Delete(int? id)
@@ -311,16 +318,58 @@ namespace medcenter_backend.Controllers
             }
         }
 
-        private async Task RemoverMedicoAsync(int usuarioId)
+        private async Task CriarClinicaAsync(Usuario usuario)
         {
-            var medicoExistente = await _context.Medicos.FirstOrDefaultAsync(m => m.UsuarioId == usuarioId);
+            var clinicaExistente = await _context.Clinicas.FirstOrDefaultAsync(c => c.UsuarioId == usuario.Id);
 
-            if (medicoExistente != null)
+            if (clinicaExistente == null)
             {
-                _context.Medicos.Remove(medicoExistente);
+                var novaClinica = new Clinica
+                {
+                    Nome = usuario.Nome,
+                    Telefone = usuario.Telefone,
+                    Email = usuario.Email,
+                    Endereço = "A Definir",
+                    HoraInicioFuncionamento = TimeSpan.FromHours(7),
+                    HoraFimFuncionamento = TimeSpan.FromHours(18),
+                    UsuarioId = usuario.Id,
+                    // Adicione aqui os campos específicos da Clinica, se houver
+                };
+
+                _context.Add(novaClinica);
                 await _context.SaveChangesAsync();
             }
         }
+
+        
+
+        private async Task RemoverEntidadeAsync(int usuarioId)
+        {
+            // Verifique se o usuário é um médico e remova, se existir
+            await RemoverMedicoAsync(usuarioId);
+
+            
+            await RemoverClinicaAsync(usuarioId);
+            
+        }
+
+        private Task RemoverMedicoAsync(int usuarioId)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+         private async Task RemoverClinicaAsync(int usuarioId)
+         {
+             var clinicaExistente = await _context.Clinicas.FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
+
+             if (clinicaExistente != null)
+             {
+                 _context.Clinicas.Remove(clinicaExistente);
+                 await _context.SaveChangesAsync();
+             }
+         }
+        
 
         private bool UsuarioExists(int id)
         {

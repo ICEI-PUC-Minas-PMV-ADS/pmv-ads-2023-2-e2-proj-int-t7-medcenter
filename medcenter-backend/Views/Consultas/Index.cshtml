@@ -1,0 +1,59 @@
+﻿@model IEnumerable<medcenter_backend.Models.Consulta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Agendar Consultas</h1>
+
+<p>
+    <a asp-action="Create">Nova Consulta</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Paciente
+            </th>
+            <th>
+                Dependente
+            </th>
+            <th>
+                Clínica
+            </th>
+            <th>
+                Médico
+            </th>
+            <th>
+                Data da Consulta
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paciente.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dependente.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Clinica.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medico.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataConsulta)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
