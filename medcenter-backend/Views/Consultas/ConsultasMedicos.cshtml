@@ -1,0 +1,55 @@
+﻿@model List<medcenter_backend.Models.Consulta>
+
+<h2>Minhas Consultas</h2>
+
+<form method="get" action="@Url.Action("ConsultasMedicos")">
+    <div class="form-group">
+        <label for="nomePaciente">Filtrar por Nome do Paciente:</label>
+        <input type="text" id="nomePaciente" name="nomePaciente" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+</form>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <a asp-action="ConsultasMedicos" asp-route-sortOrder="@ViewBag.DataConsultaSort" asp-route-currentFilter="@ViewBag.CurrentFilter">Data e Hora da Consulta</a>
+                </th>
+                <th>
+                    <a asp-action="ConsultasMedicos" asp-route-sortOrder="@ViewBag.NomePacienteSort" asp-route-currentFilter="@ViewBag.CurrentFilter">Paciente</a>
+                </th>
+                <th>
+                    <a asp-action="ConsultasMedicos" asp-route-sortOrder="@ViewBag.NomeDependenteSort" asp-route-currentFilter="@ViewBag.CurrentFilter">Dependente</a>
+                </th>
+                <th>
+                    <a asp-action="ConsultasMedicos" asp-route-sortOrder="@ViewBag.NomeClinicaSort" asp-route-currentFilter="@ViewBag.CurrentFilter">Clínica</a>
+                </th>
+                <th>
+                    <a asp-action="ConsultasMedicos" asp-route-sortOrder="@ViewBag.StatusSort" asp-route-currentFilter="@ViewBag.CurrentFilter">Status</a>
+                </th>
+                <th>Ação</th> <!-- Nova coluna para ação -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var consulta in Model)
+            {
+                <tr>
+                    <td>@consulta.DataConsulta.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@consulta.Paciente.Nome</td>
+                    <td>@(consulta.Dependente != null ? consulta.Dependente.Nome : "N/A")</td>
+                    <td>@consulta.Clinica.Nome</td>
+                    <td>@consulta.Status</td>
+                    <td>
+                        @if (consulta.Status != StatusConsulta.Realizada && consulta.Status != StatusConsulta.Cancelada)
+                        {
+                            <a asp-action="MarcarComoRealizada" asp-route-id="@consulta.Id" class="btn btn-success">Marcar como Realizada</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
