@@ -1,0 +1,41 @@
+﻿@model medcenter_backend.Models.InfoExm
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>InfoExm</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Detalhes)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Detalhes)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Preparo)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Preparo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-primary" asp-action="Index">Voltar</a>
+</div>
