@@ -5,6 +5,16 @@
 }
 
 <h1>Exames</h1>
+
+<form asp-controller="InfoExms" asp-action="Pesquisar" method="get">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="termoPesquisa" placeholder="Digite o termo de pesquisa">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -18,18 +28,19 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">Saiba Mais</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@item.Id">Saiba Mais</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
