@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using medcenter_backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using medcenter_backend.Services;
+using System.Configuration;
 
 namespace medcenter_backend.Controllers
 {
@@ -15,11 +17,14 @@ namespace medcenter_backend.Controllers
     public class ConsultasController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public ConsultasController(AppDbContext context)
+        public ConsultasController(AppDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
+
 
 
         // GET: Consultas
@@ -63,7 +68,8 @@ namespace medcenter_backend.Controllers
             {
                 DataConsulta = DateTime.Now, // Você pode ajustar conforme necessário
                 Status = StatusConsulta.Agendada,
-                PacienteId = paciente.Id
+                PacienteId = paciente.Id,
+                TipoConsulta = TipoConsulta.Presencial // Definir o tipo de consulta aqui
             };
 
             ViewBag.Pacientes = new SelectList(new List<Paciente> { paciente }, "Id", "Nome", paciente.Id);
@@ -74,10 +80,9 @@ namespace medcenter_backend.Controllers
             return View(novaConsulta);
         }
 
-        // POST: Consultas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,PacienteId,DependenteId,MedicoId,ClinicaId,DataConsulta,Status")] Consulta consulta)
+        public async Task<IActionResult> Create([Bind("Id,PacienteId,DependenteId,MedicoId,ClinicaId,DataConsulta,Status,TipoConsulta")] Consulta consulta)
         {
             // Verificar se a data da consulta está no futuro
             if (consulta.DataConsulta < DateTime.Now)
@@ -99,8 +104,50 @@ namespace medcenter_backend.Controllers
                     consulta.DependenteId = null;
                 }
 
+                // Ajuste para obter o paciente associado ao usuário conectado
+                var userEmail = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var paciente = _context.Pacientes.Include(p => p.Usuario).FirstOrDefault(p => p.Usuario.Email == userEmail);
+
+                consulta.PacienteId = paciente.Id;
+
                 _context.Add(consulta);
                 await _context.SaveChangesAsync();
+
+                // Enviar e-mail de consulta agendada
+                string emailSubject = $"Medcenter - Consulta Agendada - {consulta.DataConsulta:dd/MM/yyyy HH:mm}";
+                string username = paciente.Nome;
+                string emailMessage = $"Olá {username},\n\nSua consulta foi agendada com sucesso. Abaixo estão os detalhes:\n\n";
+
+                emailMessage += $"Paciente: {paciente.Nome}\n";
+
+                if (consulta.DependenteId != null)
+                {
+                    var dependente = _context.Dependentes.FirstOrDefault(d => d.Id == consulta.DependenteId);
+                    emailMessage += $"Dependente: {dependente.Nome}\n";
+                }
+
+                var medico = _context.Medicos.FirstOrDefault(m => m.Id == consulta.MedicoId);
+                var clinica = _context.Clinicas.FirstOrDefault(c => c.Id == consulta.ClinicaId);
+
+                emailMessage += $"Médico: {medico.Nome}\n";
+                emailMessage += $"Clínica: {clinica.Nome}\n";
+                emailMessage += $"Horário: {consulta.DataConsulta:dd/MM/yyyy HH:mm}\n\n";
+
+                // Enviar e-mail
+                EmailSender emailSender = new EmailSender();
+                await emailSender.SendEmail(emailSubject, paciente.Email, username, emailMessage);
+
+                // Criar sala no Google Meet se a consulta for do tipo Online
+                if (consulta.TipoConsulta == TipoConsulta.Online)
+                {
+                    string patientEmail = paciente.Email;
+                    string doctorEmail = medico.Email;
+                    DateTime meetingStartTime = consulta.DataConsulta;
+                    DateTime meetingEndTime = consulta.DataConsulta.AddMinutes(30); // Exemplo: Consulta de 30 minutos
+
+                    // Chamar o método CreateMeeting do GoogleMeetService
+                    }
+
                 return RedirectToAction(nameof(Index));
             }
 

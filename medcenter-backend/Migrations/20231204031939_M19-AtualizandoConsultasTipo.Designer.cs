@@ -12,8 +12,8 @@ using medcenter_backend.Models;
 namespace medcenter_backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231128220507_Info-Exms")]
-    partial class InfoExms
+    [Migration("20231204031939_M19-AtualizandoConsultasTipo")]
+    partial class M19AtualizandoConsultasTipo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,6 +82,12 @@ namespace medcenter_backend.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("PacienteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoConsulta")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
