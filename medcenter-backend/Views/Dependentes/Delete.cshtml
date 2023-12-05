@@ -48,8 +48,8 @@
             @Html.DisplayFor(model => model.Paciente.Id)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
+
+    <form asp-action="Delete" asp-method="post">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-controller="Pacientes" asp-action="Index">Voltar</a>
