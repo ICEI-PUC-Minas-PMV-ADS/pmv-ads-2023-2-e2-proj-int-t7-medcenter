@@ -46,7 +46,7 @@
                     <td>@dependente.Email</td>
                     <td>
                         <a asp-controller="Dependentes" asp-action="Edit" asp-route-id="@dependente.Id">Editar</a> |
-                        <a asp-controller="Dependentes" asp-action="Delete" asp-route-id="@dependente.Id">Excluir</a>
+                        <a asp-controller="Dependentes" asp-action="Delete" asp-route-id="@dependente.Id" onclick="return confirm('Tem certeza que deseja excluir este dependente?')">Excluir</a>
                     </td>
                 </tr>
             }
