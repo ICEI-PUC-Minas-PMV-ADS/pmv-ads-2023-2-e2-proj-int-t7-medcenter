@@ -1,0 +1,37 @@
+﻿.left_unidades {
+    position: absolute;
+    width: 600px;
+    height: 32px;
+    left: 100px;
+    top: 100px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 56px;
+    color: #4d4d4d;
+}
+
+.loc_snt_efg {
+    box-sizing: border-box;
+    position: absolute;
+    width: 700px;
+    height: 300px;
+    left: 600px;
+    top: 100px;
+    border: 2px solid #3CAEC7;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.loc_vl_sr {
+    box-sizing: border-box;
+    position: absolute;
+    width: 700px;
+    height: 300px;
+    left: 600px;
+    top: 450px;
+    border: 2px solid #3CAEC7;
+    border-radius: 25px;
+    padding: 5px;
+}
