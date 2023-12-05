@@ -91,11 +91,6 @@ namespace medcenter_backend.Controllers
 
         }
 
-        [HttpPost]
-        public IActionResult EnviarLinkParaRedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
-        {
-         
-        }
 
         [AllowAnonymous]
         public async Task<IActionResult> Logout()
