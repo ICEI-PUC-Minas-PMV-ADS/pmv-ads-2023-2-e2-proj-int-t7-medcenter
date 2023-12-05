@@ -88,6 +88,13 @@ namespace medcenter_backend.Controllers
             }
 
             return View();
+
+        }
+
+        [HttpPost]
+        public IActionResult EnviarLinkParaRedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
+        {
+         
         }
 
         [AllowAnonymous]
@@ -113,6 +120,12 @@ namespace medcenter_backend.Controllers
             }
 
             return View(usuario);
+        }
+
+        [AllowAnonymous]
+        public IActionResult RedefinirSenha()
+        { 
+            return View();
         }
 
         [AllowAnonymous]
@@ -380,5 +393,6 @@ namespace medcenter_backend.Controllers
         {
             return _context.Usuarios.Any(e => e.Id == id);
         }
+
     }
 }
