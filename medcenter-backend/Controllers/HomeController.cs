@@ -20,6 +20,11 @@ namespace medcenter_backend.Controllers
             return View();
         }
 
+        public IActionResult Unidades()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
