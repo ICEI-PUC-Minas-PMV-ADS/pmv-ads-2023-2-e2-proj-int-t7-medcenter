@@ -1,0 +1,98 @@
+﻿@model medcenter_backend.Models.Exame
+
+<h2>Agendar Exame</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="DataExame">Data do Exame</label>
+        <input asp-for="DataExame" class="form-control" />
+        <span asp-validation-for="DataExame" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PacienteId">Paciente</label>
+        <select asp-for="PacienteId" class="form-control" id="PacienteId">
+            @foreach (var paciente in ViewBag.Pacientes)
+            {
+                <option value="@paciente.Value">@paciente.Text</option>
+            }
+        </select>
+        <span asp-validation-for="PacienteId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DependenteId">Dependente</label>
+        <select asp-for="DependenteId" class="form-control" id="DependenteId">
+            <option value="">Nenhum</option>
+            @foreach (var dependente in ViewBag.Dependentes)
+            {
+                <option value="@dependente.Value">@dependente.Text</option>
+            }
+        </select>
+        <span asp-validation-for="DependenteId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MedicoId">Médico</label>
+        <select asp-for="MedicoId" class="form-control">
+            @foreach (var medico in ViewBag.Medicos)
+            {
+                <option value="@medico.Value">@medico.Text</option>
+            }
+        </select>
+        <span asp-validation-for="MedicoId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ClinicaId">Clínica</label>
+        <select asp-for="ClinicaId" class="form-control">
+            @foreach (var clinica in ViewBag.Clinicas)
+            {
+                <option value="@clinica.Value">@clinica.Text</option>
+            }
+        </select>
+        <span asp-validation-for="ClinicaId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TipoExame">Tipo de Exame</label>
+        <select asp-for="TipoExame" class="form-control">
+            @foreach (var tipoExame in Enum.GetValues(typeof(medcenter_backend.Models.TipoExame)))
+            {
+                <option value="@tipoExame">@tipoExame</option>
+            }
+        </select>
+        <span asp-validation-for="TipoExame" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Endereco">Endereço do Exame</label>
+        <select asp-for="Endereco" class="form-control">
+            @foreach (var endereco in Enum.GetValues(typeof(medcenter_backend.Models.EnderecoExame)))
+            {
+                <option value="@endereco">@((medcenter_backend.Models.EnderecoExame)endereco)</option>
+            }
+        </select>
+        <span asp-validation-for="Endereco" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Agendar Exame" class="btn btn-primary" />
+    </div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#PacienteId").change(function () {
+            var pacienteId = $(this).val();
+
+            $.ajax({
+                url: "/Exames/GetDependentes",
+                type: "GET",
+                data: { pacienteId: pacienteId },
+                success: function (data) {
+                    $("#DependenteId").empty();
+                    $("#DependenteId").append('<option value="">Nenhum</option>');
+
+                    $.each(data, function (key, value) {
+                        $("#DependenteId").append('<option value="' + value.value + '">' + value.text + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>

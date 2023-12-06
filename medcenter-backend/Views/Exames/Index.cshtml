@@ -1,0 +1,39 @@
+﻿@model IEnumerable<medcenter_backend.Models.Exame>
+
+<h2>Lista de Exames</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Data do Exame</th>
+            <th>Paciente</th>
+            <th>Dependente</th>
+            <th>Médico</th>
+            <th>Clínica</th>
+            <th>Status</th>
+            <th>Tipo de Exame</th>
+            <th>Endereço</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DataExame.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@item.Paciente.Nome</td>
+                <td>@(item.Dependente != null ? item.Dependente.Nome : "-")</td>
+                <td>@item.Medico.Nome</td>
+                <td>@item.Clinica.Nome</td>
+                <td>@item.Status</td>
+                <td>@item.TipoExame</td>
+                <td>@item.Endereco</td>
+                <td>
+                    <a type="button" class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a type="button" class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                    <a type="button" class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

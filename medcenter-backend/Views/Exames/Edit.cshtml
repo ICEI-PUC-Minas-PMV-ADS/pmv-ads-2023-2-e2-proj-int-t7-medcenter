@@ -1,0 +1,91 @@
+﻿@model medcenter_backend.Models.Exame
+
+<h2>Editar Exame</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="DataExame">Data do Exame</label>
+        <input asp-for="DataExame" class="form-control" />
+        <span asp-validation-for="DataExame" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PacienteId">Paciente</label>
+        <select asp-for="PacienteId" class="form-control" id="PacienteId">
+            <option value="">Selecione o Paciente</option>
+            @foreach (var paciente in ViewBag.Pacientes)
+            {
+                <option value="@paciente.Value" selected="@(@paciente.Value == Model.PacienteId.ToString())">@paciente.Text</option>
+            }
+        </select>
+        <span asp-validation-for="PacienteId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DependenteId">Dependente</label>
+        <select asp-for="DependenteId" class="form-control" id="DependenteId">
+            <option value="">Nenhum</option>
+            @foreach (var dependente in ViewBag.Dependentes)
+            {
+                <option value="@dependente.Value" selected="@(@dependente.Value == Model.DependenteId.ToString())">@dependente.Text</option>
+            }
+        </select>
+        <span asp-validation-for="DependenteId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ClinicaId">Clínica</label>
+        <select asp-for="ClinicaId" class="form-control" id="ClinicaId">
+            <option value="">Selecione a Clínica</option>
+            @foreach (var clinica in ViewBag.Clinicas)
+            {
+                <option value="@clinica.Value" selected="@(@clinica.Value == Model.ClinicaId.ToString())">@clinica.Text</option>
+            }
+        </select>
+        <span asp-validation-for="ClinicaId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MedicoId">Médico</label>
+        <select asp-for="MedicoId" class="form-control" id="MedicoId">
+            <option value="">Selecione o Médico</option>
+            @foreach (var medico in ViewBag.Medicos)
+            {
+                <option value="@medico.Value" selected="@(@medico.Value == Model.MedicoId.ToString())">@medico.Text</option>
+            }
+        </select>
+        <span asp-validation-for="MedicoId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TipoExame">Tipo de Exame</label>
+        <select asp-for="TipoExame" class="form-control" id="TipoExame">
+            <option value="">Selecione o Tipo de Exame</option>
+            @foreach (var tipoExame in ViewBag.TiposExame)
+            {
+                <option value="@tipoExame.Value" selected="@(@tipoExame.Value == Model.TipoExame.ToString())">@tipoExame.Text</option>
+            }
+        </select>
+        <span asp-validation-for="TipoExame" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Endereco">Endereço</label>
+        <select asp-for="Endereco" class="form-control" id="Endereco">
+            <option value="">Selecione o Endereço</option>
+            @foreach (var endereco in ViewBag.Enderecos)
+            {
+                <option value="@endereco.Value" selected="@(@endereco.Value == Model.Endereco.ToString())">@endereco.Text</option>
+            }
+        </select>
+        <span asp-validation-for="Endereco" class="text-danger"></span>
+    </div>
+
+    <!-- Adicione outros campos conforme necessário -->
+
+    <div class="form-group">
+        <input type="submit" value="Salvar Alterações" class="btn btn-primary" />
+    </div>
+</form>

@@ -18,7 +18,7 @@ namespace medcenter_backend.Models
         public DbSet<Medico> Medicos { get; set; }
         public DbSet<Clinica> Clinicas { get; set; }
         public DbSet<Consulta> Consultas { get; set; }
-
+        public DbSet<Exame> Exames { get; set; }
         public DbSet<InfoExm> InfoExms { get; set; }
 
         public DbSet <Feedback> Feedbacks { get; set; }
