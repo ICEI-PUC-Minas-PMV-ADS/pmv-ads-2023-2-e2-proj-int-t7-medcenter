@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using medcenter_backend.Models;
 
@@ -11,9 +12,11 @@ using medcenter_backend.Models;
 namespace medcenter_backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231205213905_M22-AdicionandoExame")]
+    partial class M22AdicionandoExame
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,8 +156,8 @@ namespace medcenter_backend.Migrations
                     b.Property<int?>("DependenteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Endereco")
-                        .HasColumnType("int");
+                    b.Property<string>("Endereco")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MedicoId")
                         .HasColumnType("int");

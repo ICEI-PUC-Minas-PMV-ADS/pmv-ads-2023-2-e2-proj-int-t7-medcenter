@@ -1,0 +1,22 @@
+﻿@model medcenter_backend.Models.Exame
+
+<h2>Detalhes do Exame</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Detalhes do Exame</h4>
+
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Data do Exame:</strong> @Model.DataExame.ToString("dd/MM/yyyy HH:mm")</li>
+            <li class="list-group-item"><strong>Paciente:</strong> @Model.Paciente.Nome</li>
+            <li class="list-group-item"><strong>Dependente:</strong> @(Model.Dependente != null ? Model.Dependente.Nome : "Nenhum")</li>
+            <li class="list-group-item"><strong>Médico:</strong> @Model.Medico.Nome</li>
+            <li class="list-group-item"><strong>Clínica:</strong> @Model.Clinica.Nome</li>
+            <li class="list-group-item"><strong>Tipo de Exame:</strong> @Model.TipoExame</li>
+            <li class="list-group-item"><strong>Endereço do Exame:</strong> @Model.Endereco</li>
+        </ul>
+
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mt-3">Editar</a>
+        <a asp-action="Index" class="btn btn-secondary mt-3">Voltar</a>
+    </div>
+</div>

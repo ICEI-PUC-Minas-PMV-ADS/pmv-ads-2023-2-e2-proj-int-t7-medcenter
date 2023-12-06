@@ -129,30 +129,54 @@ public class DependentesController : Controller
         return View(dependente);
     }
 
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id)
+    // GET: Dependente/Delete/Id
+    public async Task<IActionResult> Delete(int? id)
     {
-        if (_context.Dependentes == null)
+        if (id == null || _context.Dependentes == null)
         {
-            return Problem("Entity set 'AppDbContext.Dependentes' is null.");
+            return NotFound();
         }
 
-        var dependente = await _context.Dependentes.FindAsync(id);
+        var dependente = await _context.Dependentes
+            .Include(d => d.Paciente)
+            .FirstOrDefaultAsync(m => m.Id == id);
 
         if (dependente == null)
         {
             return NotFound();
         }
 
+        return View(dependente);
+    }
+
+    // POST: Dependente/Delete/Id
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        if (_context.Dependentes == null)
+        {
+            return Problem("Dependente não encontrado para exclusão.");
+        }
+
+        var dependente = await _context.Dependentes.FindAsync(id);
+
+        if (dependente == null)
+        {
+            return RedirectToAction(nameof(Index));
+        }
+
         try
         {
-            var pacienteId = dependente.PacienteId; // Captura o ID do paciente associado antes de excluir o dependente
-            _context.Dependentes.Remove(dependente);
-            await _context.SaveChangesAsync();
+            // Remover consultas associadas ao dependente
+            var consultasDoDependente = _context.Consultas.Where(c => c.DependenteId == id);
+            _context.Consultas.RemoveRange(consultasDoDependente);
 
-            // Redireciona diretamente para a lista de dependentes no paciente após a exclusão do dependente
-            return RedirectToAction("Index", "Dependentes", new { id = pacienteId });
+            // Remover o dependente
+            _context.Dependentes.Remove(dependente);
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Pacientes");
         }
         catch (DbUpdateConcurrencyException)
         {

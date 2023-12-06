@@ -30,6 +30,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
     options.AddPolicy("MedicPolicy", policy => policy.RequireRole("Medico"));
     options.AddPolicy("ClinicPolicy", policy => policy.RequireRole("Clinica"));
+    options.AddPolicy("PacientePolicy", policy => policy.RequireRole("Paciente"));
 });
 
 builder.Services.AddScoped<EmailSender>();
@@ -63,10 +64,6 @@ app.MapControllerRoute(
     defaults: new { controller = "Clinicas", action = "Edit" });
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
     name: "consultas",
     pattern: "Consultas/{action=Index}/{id?}",
     defaults: new { controller = "Consultas" });
@@ -75,5 +72,9 @@ app.MapControllerRoute(
     name: "RedefinicaoSenha",
     pattern: "RedefinirSenha/{action}/{token?}",
     defaults: new { controller = "RedefinirSenha", action = "EsqueciMinhaSenha" });
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
