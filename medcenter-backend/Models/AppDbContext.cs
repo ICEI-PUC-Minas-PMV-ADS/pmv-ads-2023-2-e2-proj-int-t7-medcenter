@@ -6,7 +6,11 @@ namespace medcenter_backend.Models
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+		public AppDbContext()
+		{
+		}
+
+		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
@@ -16,5 +20,8 @@ namespace medcenter_backend.Models
         public DbSet<Consulta> Consultas { get; set; }
 
         public DbSet<InfoExm> InfoExms { get; set; }
+
+        public DbSet <Feedback> Feedbacks { get; set; }
     }
+       
 }

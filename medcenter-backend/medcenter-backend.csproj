@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -6,6 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>medcenter_backend</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="elegantfeedback\**" />
+    <Content Remove="elegantfeedback\**" />
+    <EmbeddedResource Remove="elegantfeedback\**" />
+    <None Remove="elegantfeedback\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\IdentityModel.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Remove="wwwroot\css\home.cs" />
