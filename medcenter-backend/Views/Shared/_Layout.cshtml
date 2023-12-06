@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - medcenter_backend</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/medcenter_backend.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
@@ -26,20 +25,17 @@
                 align-items: center;
             }
 
-
         .navbar-nav .nav-item:hover .submenu {
             display: block;
         }
     </style>
 </head>
 <body>
-<<<<<<< HEAD
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <img class="logo-icon" asp-area="" asp-controller="Home" asp-action="Index" src="https://cdn-icons-png.flaticon.com/512/7403/7403331.png" alt="Icone Medcenter">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -65,35 +61,18 @@
                         </li>
                         @if (User.IsInRole("Admin"))
                         {
-=======
-      <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container-fluid">
-                    <img class="logo-icon" asp-area="" asp-controller="Home" asp-action="Index" src="https://cdn-icons-png.flaticon.com/512/7403/7403331.png" alt="Icone Medcenter">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
->>>>>>> b95073be5e227e965235352a8ac6e9326960443f
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Consultas" asp-action="Index">Consultas</a>
-                            </li>
-<<<<<<< HEAD
                         }
                         @if (User.IsInRole("Medico"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Create">Agendar Exame</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Consultas" asp-action="ConsultasMedicos">Consultas Medicos</a>
                             </li>
                         }
                     </ul>
                     <ul class="navbar-nav">
-
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
@@ -110,121 +89,26 @@
                             </li>
                         }
                     </ul>
-=======
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Unidades">Unidades</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="InfoExms" asp-action="Index">Exames</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Empresas">Empresas</a>
-                            </li>
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Usuarios</a>
-                                </li>
-                            }
-                            @if (User.IsInRole("Medico"))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Consultas" asp-action="ConsultasMedicos">Consultas Medicos</a>
-                                </li>
-                            }
-                        </ul>
-                        <ul class="navbar-nav">
-
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Logout">Sair</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Log In</a>
-                                </li>
-                                <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Create">Sign In</a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <a class="nav-perfil-icon" asp-controller="Pacientes" asp-action="Index">
-                            <img class="profile-icon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" width="100" height="100" alt="Icone Medcenter">
-                        </a>
-                    }
->>>>>>> b95073be5e227e965235352a8ac6e9326960443f
                 </div>
-            </nav>
-        </header>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="nav-perfil-icon" asp-controller="Pacientes" asp-action="Index">
+                        <img class="profile-icon" src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" width="100" height="100" alt="Icone Medcenter">
+                    </a>
+                }
+            </div>
+        </nav>
+    </header>
 
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer>
-        <div class="footer">
-            <ul class="footer-item">
-                <li><h4>Institucional</h4></li>
-                <li>Conheça o Medcenter</li>
-                <li>Como seus exames são analisados?</li>
-                <li>Canal de Conduta</li>
-                <li>Política de Privacidade</li>
-                <li>Missão, Visão e Valores</li>
-                <li>Políticas de Qualidade</li>
-                <li>Responsabilidade Social</li>
-            </ul>
-            <ul class="footer-item">
-                <li><h4>Exames</h4></li>
-                <li>Exames laboratoriais</li>
-                <li>Exames por imagem</li>
-            </ul>
-            <ul class="footer-item">
-                <li><h4>Serviços</h4>
-                </li>
-                <li>Checkup</li>
-                <li>Atendimento Domiciliar</li>
-                <li>Medicina Personalizada</li>
-            </ul>
-            <ul class="footer-item">
-                <li><h4>Financeiro</h4></li>
-                <li>Boleto</li>
-                <li>Nota Fiscal</li>
-                <li>Orçamento</li>
-            </ul>
-            <div class="footer-contact-us">
-                <h4>Fale conosco</h4>
-                <p>
-                    (31) xxxx xxxx <img src="https://i.pinimg.com/originals/67/8b/20/678b20b7e76e3c81baa4f8c6ee1bc656.png" width="20" height="20" alt="icone do whatsapp">
-                </p>
-                <p>Segunda a sexta-feira - 6h às 20h</p>
-                <p>Sábado e feriados - 6h às 18h</p>
-                <p>Domingo - 7h às 13h</p>
-                <img src="https://imagepng.org/facebook-icone/facebook-icone-icon-1/" width="30" height="30" alt="icone do facebook"><img src="https://imagepng.org/wp-content/uploads/2017/08/instagram-icone-icon-4.png" width="30" height="30" alt="icone do instagram">
-                <h3>Unidades</h3>
-            </div>
-        </div>
-    </footer>
-    <ul class="footer-end">
-        <li>Plataforma desenvolvida pelos alunos de Análise e desenvolvimento de Sistema da PUC Minas - 2023</li>
-        <li>Medcenter - 2023</li>
-    </ul>
-
-</body>
-
-
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/Home.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
+</body>
 </html>
