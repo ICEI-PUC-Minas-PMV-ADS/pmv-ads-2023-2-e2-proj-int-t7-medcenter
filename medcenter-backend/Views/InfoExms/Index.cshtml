@@ -6,15 +6,17 @@
 
 <h1>Exames</h1>
 
+<div>
 <form asp-controller="InfoExms" asp-action="Pesquisar" method="get">
     <div class="input-group mb-3">
-        <input type="text" class="form-control" name="termoPesquisa" placeholder="Digite o termo de pesquisa">
+        <input type="text" id="test" class="form-control" name="termoPesquisa" placeholder="Digite o termo de pesquisa">
         <div class="input-group-append">
             <button class="btn btn-primary" type="submit">Pesquisar</button>
             <a class="btn btn-secondary" asp-action="Index">Limpar pesquisa</a>
         </div>
     </div>
 </form>
+</div>
 
 <table class="table">
     <thead>
