@@ -1,10 +1,11 @@
 using medcenter_backend.Models;
+using medcenter_backend.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Adicione serviços ao contêiner.
 builder.Services.AddControllersWithViews();
 
 object value = builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -29,15 +30,17 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
     options.AddPolicy("MedicPolicy", policy => policy.RequireRole("Medico"));
     options.AddPolicy("ClinicPolicy", policy => policy.RequireRole("Clinica"));
+    options.AddPolicy("PacientePolicy", policy => policy.RequireRole("Paciente"));
 });
+
+builder.Services.AddScoped<EmailSender>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure o pipeline de solicitação HTTP.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -61,16 +64,17 @@ app.MapControllerRoute(
     defaults: new { controller = "Clinicas", action = "Edit" });
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapControllerRoute(
     name: "consultas",
     pattern: "Consultas/{action=Index}/{id?}",
     defaults: new { controller = "Consultas" });
+
+app.MapControllerRoute(
+    name: "RedefinicaoSenha",
+    pattern: "RedefinirSenha/{action}/{token?}",
+    defaults: new { controller = "RedefinirSenha", action = "EsqueciMinhaSenha" });
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

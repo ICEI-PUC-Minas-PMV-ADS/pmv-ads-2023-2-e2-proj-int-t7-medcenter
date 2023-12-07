@@ -19,7 +19,6 @@ namespace medcenter_backend.Controllers
         {
             return View();
         }
-
         public IActionResult Unidades()
         {
             return View();
@@ -35,7 +34,7 @@ namespace medcenter_backend.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
+
         public IActionResult Empresas()
         {
             return View();
@@ -56,17 +55,20 @@ namespace medcenter_backend.Controllers
             emailMessage.To.Add("bruno.n.vs@hotmail.com");
             emailMessage.IsBodyHtml = true;
 
-            emailMessage.Body = "<p>Nome da Empresa: " + model.Name + "</p> <p>Nome Completo: " + model.Name2 + "</p>" + 
+            emailMessage.Body = "<p>Nome da Empresa: " + model.Name + "</p> <p>Nome Completo: " + model.Name2 + "</p>" +
                 "<p>Telefone com DDD: " + model.Phone + "</p>" + "<p>E-mail: " + model.Email + "</p>";
 
             var client = new SmtpClient("smtp-mail.outlook.com", 587);
-        
-                client.Credentials = new NetworkCredential("bruno.n.vs@hotmail.com", "p!zZa456123");
-                client.EnableSsl = true;
-               
-            try {
+
+            client.Credentials = new NetworkCredential("bruno.n.vs@hotmail.com", "p!zZa456123");
+            client.EnableSsl = true;
+
+            try
+            {
                 client.Send(emailMessage);
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ViewData["message"] = "Falha ao enviar mensagem : " + ex.Message;
             }
 

@@ -9,6 +9,7 @@ using medcenter_backend.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using medcenter_backend.Services;
 
 namespace medcenter_backend.Controllers
 {
@@ -16,8 +17,9 @@ namespace medcenter_backend.Controllers
     public class UsuariosController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly EmailSender _emailSender;
 
-        public UsuariosController(AppDbContext context)
+        public UsuariosController(AppDbContext context, EmailSender emailSender)
         {
             _context = context;
         }
@@ -88,7 +90,9 @@ namespace medcenter_backend.Controllers
             }
 
             return View();
+
         }
+
 
         [AllowAnonymous]
         public async Task<IActionResult> Logout()
@@ -114,6 +118,46 @@ namespace medcenter_backend.Controllers
 
             return View(usuario);
         }
+
+        [AllowAnonymous]
+        public IActionResult EsqueciMinhaSenha()
+        {
+            return View();
+        }
+
+        
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> EnviarLinkParaRedefinirSenha(string email)
+        {
+            // Verifique se o e-mail existe na base de dados
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (usuario != null)
+            {
+                // Gera um token exclusivo para a redefinição de senha
+                var token = Guid.NewGuid().ToString();
+
+                // Salve o token no banco de dados junto com a data de expiração
+                usuario.TokenRedefinicaoSenha = token;
+                usuario.ExpiracaoTokenRedefinicaoSenha = DateTime.UtcNow.AddHours(1);
+                await _context.SaveChangesAsync();
+
+                // Envie o e-mail com o link de redefinição
+                var subject = "Redefinição de Senha";
+                var message = $"Clique no link para redefinir sua senha: {Url.Action("RedefinirSenha", "Usuarios", new { token = token }, Request.Scheme)}";
+                await _emailSender.SendEmail(subject, usuario.Email, usuario.Nome, message);
+
+                ViewBag.Message = "E-mail enviado com sucesso! Verifique sua caixa de entrada.";
+                return View("EsqueciMinhaSenha");
+            }
+            else
+            {
+                ViewBag.Message = "E-mail não encontrado.";
+                return View("EsqueciMinhaSenha");
+            }
+        }
+        
 
         [AllowAnonymous]
         // GET: Usuarios/Create
@@ -380,5 +424,6 @@ namespace medcenter_backend.Controllers
         {
             return _context.Usuarios.Any(e => e.Id == id);
         }
+
     }
 }

@@ -45,8 +45,9 @@
                     <td>@dependente.DataNascimento.ToShortDateString()</td>
                     <td>@dependente.Email</td>
                     <td>
-                        <a asp-controller="Dependentes" asp-action="Edit" asp-route-id="@dependente.Id">Editar</a> |
-                        <a asp-controller="Dependentes" asp-action="Delete" asp-route-id="@dependente.Id">Excluir</a>
+                        <a type="button" class="btn btn-warning" asp-controller="Dependentes" asp-action="Edit" asp-route-id="@dependente.Id">Editar</a> |
+                        <a type="button" class="btn btn-danger" asp-controller="Dependentes" asp-action="Delete" asp-route-id="@dependente.Id">Excluir</a>
+
                     </td>
                 </tr>
             }
@@ -58,7 +59,6 @@ else
     <p>Nenhum dependente cadastrado.</p>
 }
 
-<!-- Links para Adicionar e Editar Dependentes -->
 <div>
-    <a asp-controller="Dependentes" asp-action="Create">Adicionar Dependente</a>
+    <a type="button" class="btn btn-info" asp-controller="Dependentes" asp-action="Create">Adicionar Dependente</a>
 </div>

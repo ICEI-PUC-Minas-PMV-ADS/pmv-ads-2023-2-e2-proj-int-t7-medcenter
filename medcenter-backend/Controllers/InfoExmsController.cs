@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using medcenter_backend.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace medcenter_backend.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class InfoExmsController : Controller
     {
         private readonly AppDbContext _context;
@@ -20,14 +17,31 @@ namespace medcenter_backend.Controllers
             _context = context;
         }
 
-        // GET: InfoExms
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-              return View(await _context.InfoExms.ToListAsync());
+            return View(await _context.InfoExms.ToListAsync());
         }
 
-        // GET: InfoExms/Details/5
+        [AllowAnonymous]
+        public async Task<IActionResult> Pesquisar(string termoPesquisa)
+        {
+            if (string.IsNullOrEmpty(termoPesquisa))
+            {
+                // Se nenhum termo de pesquisa for fornecido, exibir todos os exames
+                return RedirectToAction(nameof(Index));
+            }
+
+            var resultados = await _context.InfoExms
+                .Where(e => e.Nome.Contains(termoPesquisa) ||
+                            e.Description.Contains(termoPesquisa) ||
+                            e.Detalhes.Contains(termoPesquisa) ||
+                            e.Preparo.Contains(termoPesquisa))
+                .ToListAsync();
+
+            return View("Index", resultados);
+        }
+
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,17 +60,11 @@ namespace medcenter_backend.Controllers
             return View(infoExm);
         }
 
-        // GET: InfoExms/Create
-
-
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: InfoExms/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Description,Detalhes,Preparo")] InfoExm infoExm)
@@ -70,7 +78,6 @@ namespace medcenter_backend.Controllers
             return View(infoExm);
         }
 
-        // GET: InfoExms/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.InfoExms == null)
@@ -86,9 +93,6 @@ namespace medcenter_backend.Controllers
             return View(infoExm);
         }
 
-        // POST: InfoExms/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Description,Detalhes,Preparo")] InfoExm infoExm)
@@ -121,7 +125,6 @@ namespace medcenter_backend.Controllers
             return View(infoExm);
         }
 
-        // GET: InfoExms/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.InfoExms == null)
@@ -139,7 +142,6 @@ namespace medcenter_backend.Controllers
             return View(infoExm);
         }
 
-        // POST: InfoExms/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -153,14 +155,14 @@ namespace medcenter_backend.Controllers
             {
                 _context.InfoExms.Remove(infoExm);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool InfoExmExists(int id)
         {
-          return _context.InfoExms.Any(e => e.Id == id);
+            return _context.InfoExms.Any(e => e.Id == id);
         }
     }
 }
