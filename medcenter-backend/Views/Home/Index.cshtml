@@ -2,9 +2,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="carousel">
+<div class="carousel_home">
     <div class="carousel-slide">
-        <img src="https://disadiagnosticos.com.br/wp-content/uploads/elementor/thumbs/BANNER_especialistas-1920x550-1-pg95b8n5l09f3nargea0eah1nma2ie5qjcd96m69vg-pgazysysh931n5spomdknrousr4qhu9ig32jq4bdks.webp"
+        <img src="https://holderradiologia.com.br/wp-content/uploads/2022/12/female-doctor-examines-x-ray-medical-office-medical-care-services-concept-1-1920x550.jpg"
              alt="Imagem 0">
     </div>
     <div class="carousel-slide">
@@ -12,7 +12,7 @@
              alt="Imagem 1">
     </div>
     <div class="carousel-slide">
-        <img src="https://holderradiologia.com.br/wp-content/uploads/2022/12/female-doctor-examines-x-ray-medical-office-medical-care-services-concept-1-1920x550.jpg"
+        <img src="https://www.institutodeimplantologia.pt/wp-content/uploads/2023/03/bebe-medico-dentista-e1678448254188-1920x550.jpg"
              alt="Imagem 2">
     </div>
 </div>
@@ -41,7 +41,7 @@
                 Clique agora no botão abaixo e faça seu cadastro e junte-se a Medcenter, uma empresa que se
                 preocupa com você.
             </p>
-            <a href="#">Clique aqui para cadastrar agora mesmo</a>
+            <a asp-area="" asp-controller="Usuarios" asp-action="Create">Clique aqui para cadastrar agora mesmo</a>
         </div>
         <div class="item2">
             <h2>Agendamentos</h2>
@@ -64,8 +64,8 @@
                 solicite o seu horário.
             </p>
             <div class="button">
-                <a class="button1" href="#">Agendar</a>
-                <a class="button2" href="#">Informações sobre procedimentos</a>
+                <a class="button1" asp-area="" asp-controller="Consultas" asp-action="Index">Agendar</a>
+                <a class="button2" asp-area="" asp-controller="InfoExms" asp-action="Index">Informações sobre procedimentos</a>
             </div>
         </div>
         <div class="flex-container2">
@@ -80,24 +80,24 @@
                     Envie-nos através do formulário abaixo os exames e as vacinas que você e sua família
                     precisam!
                 </p>
-                <a href="#">Solicite seu orçamento</a>
+                <a asp-area="" asp-controller="Home" asp-action="Empresas">Solicite seu orçamento</a>
             </div>
         </div>
     </div>
 </section>
 <section>
     <!-- Seção 2-->
-    <h1>O que você procura?</h1>
+    <h1 class="h1_home">O que você procura?</h1>
     <div class="flex-container3">
         <div class="item5">
             <h2>Exames Laboratoriais</h2>
             <img src="https://pradomed.com.br/wp-content/uploads/2016/05/laboratorias.png" alt="Imagem" width="80" height="80">
             <p>ACESSO RÁPIDO</p>
             <ul>
-                <li class="primary"><a href="#">Hemograma</a></li>
-                <li class="primary"><a href="#">Glicemia</a></li>
-                <li class="primary"><a href="#">Creatinina</a></li>
-                <li class="primary"><a href="#">Tsh Ultra Sensivel</a></li>
+                <li class="primary"><a asp-area="" asp-controller="InfoExms" asp-action="Index">Hemograma</a></li>
+                <li class="primary"><a asp-area="" asp-controller="InfoExms" asp-action="Index">Glicemia</a></li>
+                <li class="primary"><a asp-area="" asp-controller="InfoExms" asp-action="Index">Creatinina</a></li>
+                <li class="primary"><a asp-area="" asp-controller="InfoExms" asp-action="Index">Tsh Ultra Sensivel</a></li>
             </ul>
             <a href="#">VER MAIS</a>
         </div>
@@ -106,10 +106,10 @@
             <img src="https://thumbs.dreamstime.com/z/linha-preta-%C3%ADcone-para-o-raio-exame-e-radiologia-tecnologia-radiografia-152986240.jpg" alt="imagem" width="80" height="80">
             <p>ACESSO RÁPIDO</p>
             <ul>
-                <li class="secondary"><a href="#">Us Abdomen Total</a></li>
-                <li class="secondary"><a href="#">Us Pelvica Transvaginal</a></li>
-                <li class="secondary"><a href="#">Eletrocardiograma Convencional Até 12 Derivações</a></li>
-                <li class="secondary"><a href="#">Rx Torax Pa Lat</a></li>
+                <li class="secondary"><a asp-area="" asp-controller="InfoExms" asp-action="Index">Us Abdomen Total</a></li>
+                <li class="secondary"><a asp-area="" asp-controller="InfoExms" asp-action="Index">Us Pelvica Transvaginal</a></li>
+                <li class="secondary"><a asp-area="" asp-controller="InfoExms" asp-action="Index">Eletrocardiograma Convencional Até 12 Derivações</a></li>
+                <li class="secondary"><a asp-area="" asp-controller="InfoExms" asp-action="Index">Rx Torax Pa Lat</a></li>
             </ul>
             <a href="#">VER MAIS</a>
         </div>

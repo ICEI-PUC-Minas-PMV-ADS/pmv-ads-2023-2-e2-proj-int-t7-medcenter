@@ -1,0 +1,42 @@
+﻿@model medcenter_backend.Models.RedefinirSenhaModel
+
+@{
+    ViewData["Title"] = "Redefinir Senha";
+}
+
+<h1>Redefinir Senha</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="RedefinirSenha" asp-action="AtualizarSenha">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Email" />
+
+            <div class="form-group">
+                <label asp-for="NovaSenha" class="control-label">Nova Senha:</label>
+                <input asp-for="NovaSenha" class="form-control" />
+                <span asp-validation-for="NovaSenha" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmarSenha" class="control-label">Confirmar Senha:</label>
+                <input asp-for="ConfirmarSenha" class="form-control" />
+                <span asp-validation-for="ConfirmarSenha" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="Token" />
+
+            <div class="form-group">
+                <input type="submit" value="Atualizar Senha" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

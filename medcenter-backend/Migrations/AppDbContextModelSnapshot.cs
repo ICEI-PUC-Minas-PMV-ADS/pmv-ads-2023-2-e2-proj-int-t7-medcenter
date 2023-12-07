@@ -84,6 +84,9 @@ namespace medcenter_backend.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<int>("TipoConsulta")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClinicaId");
@@ -131,6 +134,51 @@ namespace medcenter_backend.Migrations
                     b.HasIndex("PacienteId");
 
                     b.ToTable("Dependentes");
+                });
+
+            modelBuilder.Entity("medcenter_backend.Models.Exame", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClinicaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataExame")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DependenteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Endereco")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MedicoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PacienteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoExame")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClinicaId");
+
+                    b.HasIndex("DependenteId");
+
+                    b.HasIndex("MedicoId");
+
+                    b.HasIndex("PacienteId");
+
+                    b.ToTable("Exames");
                 });
 
             modelBuilder.Entity("medcenter_backend.Models.InfoExm", b =>
@@ -257,6 +305,9 @@ namespace medcenter_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("ExpiracaoTokenRedefinicaoSenha")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -269,6 +320,9 @@ namespace medcenter_backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TokenRedefinicaoSenha")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -327,6 +381,39 @@ namespace medcenter_backend.Migrations
                         .HasForeignKey("PacienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Paciente");
+                });
+
+            modelBuilder.Entity("medcenter_backend.Models.Exame", b =>
+                {
+                    b.HasOne("medcenter_backend.Models.Clinica", "Clinica")
+                        .WithMany()
+                        .HasForeignKey("ClinicaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("medcenter_backend.Models.Dependente", "Dependente")
+                        .WithMany()
+                        .HasForeignKey("DependenteId");
+
+                    b.HasOne("medcenter_backend.Models.Medico", "Medico")
+                        .WithMany()
+                        .HasForeignKey("MedicoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("medcenter_backend.Models.Paciente", "Paciente")
+                        .WithMany()
+                        .HasForeignKey("PacienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Clinica");
+
+                    b.Navigation("Dependente");
+
+                    b.Navigation("Medico");
 
                     b.Navigation("Paciente");
                 });

@@ -33,11 +33,18 @@ namespace medcenter_backend.Models
         public DateTime DataConsulta { get; set; }
 
         public StatusConsulta Status { get; set; }
+
+        public TipoConsulta TipoConsulta { get; set; }
     }
     public enum StatusConsulta
     {
         Agendada,
         Realizada,
         Cancelada
+    }
+    public enum TipoConsulta
+    {
+        Presencial,
+        Online
     }
 }

@@ -6,17 +6,36 @@
     <title>@ViewData["Title"] - medcenter_backend</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/empresas.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/medcenter_backend.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Default.css" asp-append-version="true" />
+    <style>
+        .navbar-nav .submenu {
+            position: absolute;
+            display: none;
+            background-color: #fff; /* Cor de fundo do submenu */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+            .navbar-nav .submenu li {
+                list-style: none;
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+        .navbar-nav .nav-item:hover .submenu {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <img class="logo-icon" asp-area="" asp-controller="Home" asp-action="Index" src="https://cdn-icons-png.flaticon.com/512/7403/7403331.png" alt="Icone Medcenter">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -25,13 +44,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Consultas" asp-action="Index">Consultas</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Procedimentos</a>
+                            <ul class="submenu">
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Consultas" asp-action="Index">Consultas</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Index">Exames</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Unidades">Unidades</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="InfoExms" asp-action="Index">Exames</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="InfoExms" asp-action="Index">Informações Exames</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Empresas">Empresas</a>
@@ -48,9 +71,14 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Consultas" asp-action="ConsultasMedicos">Consultas Medicos</a>
                             </li>
                         }
+                        @if (User.IsInRole("Medico"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Create">Exames Medicos</a>
+                            </li>
+                        }
                     </ul>
                     <ul class="navbar-nav">
-
                         @if (User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
@@ -63,7 +91,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Login">Log In</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Create">Sign In</a>
+                                <a class="nav-link text-dark" asp-controller="Usuarios" asp-action="Create">Sign In</a>
                             </li>
                         }
                     </ul>

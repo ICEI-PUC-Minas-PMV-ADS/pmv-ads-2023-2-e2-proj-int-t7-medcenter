@@ -1,40 +1,125 @@
-﻿body {
-}
-
-.logo-icon {
+﻿.logo-icon {
     margin-left: 15px;
     width: 45px;
     height: 45px;
 }
 
-.carousel {
-    margin-top: 20px;
+.unidade {
     display: flex;
-    overflow: hidden;
-    width: 100%;
+    justify-content: space-between;
+    padding: 20px;
 }
+.text_unidade p {
+    font-size: 20px;
+}
+.map_unidade {
+    box-sizing: border-box;
+    border: 2px solid #3CAEC7;
+    border-radius: 25px;
+    padding: 5px;
+    width: 50%;
+    height: 35vh;
+}
+
+
+.body_empresas {
+    background-image: url('/img/apertodemaos.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.form_empresas {
+    border-radius: 20px;
+    background-color: #3CAEC7;
+    color: white;
+    opacity: 0.85;
+    font-size: 25px;
+    padding: 20px;
+    width: 35vw;
+}
+.main_empresas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 15%;
+    padding-bottom: 5%;
+}
+.left_empresas {
+    width: 40%;
+}
+.left_empresas h2 {
+        font-size: 55px;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+}
+.left_empresas h3 {
+    top: 50px;
+    font-size: 40px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.left_empresas p {
+    position: relative;
+    top: 40px;
+    font-size: 20px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+ }
+form-control {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    color: #3CAEC7;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+.btn1 {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: #FF0000;
+    color: white;
+    opacity: 1.0;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.btn1:hover {
+    background-color: brown;
+ }
+
+
+.input-group-append{
+    padding: 5px;
+}
+
 
 .profile-icon {
     width: 70px;
     height: 40px;
 }
-
+.carousel_home {
+    margin-top: 20px;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
 .carousel-slide {
     width: 1920px;
     transition: transform 1s ease;
 }
-
 .carousel img {
     width: 1920px;
     height: 550px;
 }
-
 .carousel-controls {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
-
 .carousel-dot {
     width: 10px;
     height: 10px;
@@ -43,15 +128,14 @@
     margin: 0 5px;
     cursor: pointer;
 }
-
 .carousel-dot.active {
         background-color: #3CAEC7;
- }
-
-
+    }
 section .flex-container {
     display: flex;
 }
+
+
 
 .item1 {
     width: 50%;
@@ -201,12 +285,6 @@ section .flex-container {
             text-decoration: underline;
         }
 
-h1 {
-    margin-left: 50px;
-    margin-bottom: 5px;
-    font-size: xx-large;
-    color: #888;
-}
 
 .flex-container3 {
     text-align: center;
@@ -344,59 +422,24 @@ h1 {
     color: white;
 }
 
+
 .footer {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-    text-decoration: none;
     background-color: #656D75;
+    padding-top:1%;
 }
 
-.footer-institutional {
+    .footer-item {
     list-style: none;
     color: white;
     font-size: small;
 }
-
-    .footer-institutional li {
-        text-align: left;
+        .footer-item li {
         padding: 5px;
     }
 
-.footer-exams {
-    list-style: none;
-    color: white;
-    font-size: small;
-}
-
-    .footer-exams li {
-        text-align: left;
-        padding: 5px;
-    }
-
-.footer-services {
-    list-style: none;
-    color: white;
-    font-size: small;
-}
-
-    .footer-services li {
-        text-align: left;
-        padding: 5px;
-    }
-
-.footer-financial {
-    list-style: none;
-    color: white;
-    font-size: small;
-}
-
-    .footer-financial li {
-        text-align: left;
-        padding: 5px;
-    }
-
-.footer-contact-us {
+    .footer-contact-us {
     color: white;
     font-size: small;
 }
@@ -408,11 +451,17 @@ h1 {
     background-color: #656D75;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     font-size: smaller;
     list-style: none;
 }
 
 .container {
     min-width: 100%;
+}
+.h1_home {
+    margin-left: 50px;
+    margin-bottom: 5px;
+    font-size: xx-large;
+    color: #888;
 }

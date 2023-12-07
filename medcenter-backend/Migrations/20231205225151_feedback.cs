@@ -5,25 +5,25 @@
 namespace medcenter_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InfoExms : Migration
+    public partial class feedback : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "InfoExms",
+                name: "Feedbacks",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Detalhes = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Preparo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Answer = table.Column<int>(type: "int", nullable: false),
+                    Comment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    FullName = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InfoExms", x => x.Id);
+                    table.PrimaryKey("PK_Feedbacks", x => x.ID);
                 });
         }
 
@@ -31,7 +31,7 @@ namespace medcenter_backend.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "InfoExms");
+                name: "Feedbacks");
         }
     }
 }
