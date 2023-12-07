@@ -76,10 +76,10 @@ Em caso de identificação de defeitos, a equipe de desenvolvimento deverá imed
 
 ## Data de Início dos Testes:
 
-Os testes terão início em a definir.
+Os testes foram realizados na semana do dia 27/11/2023 a 05/12/2023.
 
 ## Data de Conclusão dos Testes:
 
-A previsão de conclusão dos testes é a definir.
+Testes concluídos no dia 05/12/2023.
 
 

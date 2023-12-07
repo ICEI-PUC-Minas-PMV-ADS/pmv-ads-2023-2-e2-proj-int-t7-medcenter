@@ -1,0 +1,231 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.admin-message {
+    background-color: #FF0000;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.admin-message p {
+    height: 50%;
+    margin: 0;
+}
+
+.admin-message a {
+    color: #39F3FF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.admin-message a:hover {
+    text-decoration: underline;
+}
+
+header {
+    background-color: #3CAEC7;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+
+}
+
+.logo-icon{
+    margin-left: 15px;
+    width: 45px;
+    height: 45px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+    background-color: #fff;
+    color: #000;
+    border: none;
+}
+
+.btn-pesquisa {
+    color: #000;
+    margin: 30px;
+    border-radius: 10px;
+    width: 1500px;
+    height: 90px;
+}
+
+.search-icon {
+    margin-left: auto;
+    margin-right: 30px;
+    width: 25px;
+    height: 25px;
+}
+
+.login {
+    background-color: #ccc;
+    color: #000;
+    padding: 8px 15px;
+    border: none;
+    margin-right: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login a {
+    text-decoration: none;
+    color: #000;
+}
+
+.login:hover {
+    background-color: #787878;
+    color: #000;
+}
+
+.left_unidades {
+    position: absolute;
+    width: 600px;
+    height: 32px;
+    left: 100px;
+    top: 100px;    
+    font-family: 'Raleway';
+    font-style: normal;    
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 56px;    
+    color: #4d4d4d;
+}
+
+.left_unidades h2 {
+    position: relative;
+    top: 50px;
+    font-size: 20px;
+    line-height: 40px;    
+    color: #787878;
+}
+
+.left_unidades h3 {
+    position: relative;
+    top: 40PX;    
+    font-size: 15px;
+    line-height: 30px;    
+    color: #787878;
+}
+
+.loc_snt_efg {
+    box-sizing: border-box;
+    position: absolute;
+    width: 700px;
+    height: 300px;
+    left: 600px;
+    top: 100px;
+    border: 2px solid #3CAEC7;
+    border-radius: 25px;
+    padding: 5px;
+
+}
+
+.loc_vl_sr {
+    box-sizing: border-box;
+    position: absolute;
+    width: 700px;
+    height: 300px;
+    left: 600px;
+    top: 450px;
+    border: 2px solid #3CAEC7;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-decoration: none;
+    background-color: #656D75;
+    margin-top: 60%;
+}
+
+.footer-institutional {
+    list-style: none;
+    color: white;
+    font-size: small;
+}
+
+.footer-institutional li {
+    text-align: left;
+    padding: 5px;
+}
+
+.footer-exams {
+    list-style: none;
+    color: white;
+    font-size: small;
+}
+
+.footer-exams li {
+    text-align: left;
+    padding: 5px;
+}
+
+.footer-services {
+    list-style: none;
+    color: white;
+    font-size: small;
+}
+
+.footer-services li {
+    text-align: left;
+    padding: 5px;
+}
+
+.footer-financial {
+    list-style: none;
+    color: white;
+    font-size: small;
+}
+
+.footer-financial li {
+    text-align: left;
+    padding: 5px;
+}
+
+.footer-contact-us {
+    color: white;
+    font-size: small;
+}
+
+.footer-end {
+    margin: 0 auto;
+    border-top: 2px solid white;
+    color: white;
+    background-color: #656D75;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: smaller;
+    list-style: none;
+}
