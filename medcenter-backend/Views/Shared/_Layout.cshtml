@@ -71,6 +71,12 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Consultas" asp-action="ConsultasMedicos">Consultas Medicos</a>
                             </li>
                         }
+                        @if (User.IsInRole("Medico"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Exames" asp-action="Create">Exames Medicos</a>
+                            </li>
+                        }
                     </ul>
                     <ul class="navbar-nav">
                         @if (User.Identity.IsAuthenticated)

@@ -8,7 +8,7 @@ namespace medcenter_backend.Services
     {
         public async Task SendEmail(string subject, string toEmail, string username, string message)
         {
-            var apiKey = "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";
+            var apiKey = "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";
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("medcenterinforme@gmail.com", "Medcenter");
             var to = new EmailAddress(toEmail, username);

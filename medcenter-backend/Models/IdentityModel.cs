@@ -12,8 +12,3 @@ public class AplicationDbContext : IdentityDbContext<AplicationUser>
         : base ("DefaultConnection", throwIfV1Schema : false)
     { }
 }
-public Dbset <Feedback>
-public static AplicationDbContext Create ()
-{ 
-    return new AplicationDbContext();
-}
